@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منيو Funzo — Menu</title>
+<meta name="description" content="منيو Funzo — قهوة، مشروبات ساخنة وباردة، عصائر، ميلك شيك، حلويات ومخبوزات. Funzo menu in Arabic and English.">
+<meta name="theme-color" content="#14150F">
+<meta property="og:title" content="منيو Funzo — Menu">
+<meta property="og:description" content="القهوة والمشروبات والحلويات — الأسعار محدّثة.">
+<style>
+  :root{
+    --olive:#3B412C;
+    --olive-deep:#2E3322;
+    --black:#14150F;
+    --white:#F7F6EF;
+    --muted:#B4B89B;
+    --dim:#828769;
+    --hair:rgba(247,246,239,.10);
+    --dot:rgba(247,246,239,.20);
+    --ar:"SF Arabic","Geeza Pro","Noto Naskh Arabic","Droid Arabic Naskh","Segoe UI",system-ui,sans-serif;
+    --sans:"Helvetica Neue",Arial,system-ui,sans-serif;
+    --serif:ui-serif,Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;background:var(--olive)}
+  body{
+    margin:0;background:var(--olive);color:var(--white);
+    font-family:var(--ar);font-size:16px;line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:34rem;margin:0 auto;padding:0 1.35rem}
+
+  /* ================= brand bar ================= */
+  .bar{background:var(--black);padding:1rem 0}
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between}
+  .mark{display:flex;align-items:center;gap:.1rem;direction:ltr}
+  .mark .box{
+    background:var(--white);color:var(--black);font-family:var(--sans);
+    font-weight:800;font-size:1.3rem;line-height:1;padding:.15rem .25rem;border-radius:3px;
+  }
+  .mark .word{font-family:var(--sans);font-weight:800;font-size:1.3rem;letter-spacing:.02em}
+  .mark .bean{width:1.3rem;height:1.3rem;display:block}
+  .tagline{display:flex;align-items:center;gap:.45rem}
+  .tagline p{margin:0;font-family:var(--serif);font-size:.8125rem;color:var(--muted);letter-spacing:.03em}
+  .cup{width:1.4rem;height:1.4rem;display:block;overflow:visible}
+
+  /* ================= sticky chips ================= */
+  nav{position:sticky;top:0;z-index:20;background:var(--olive-deep);border-bottom:1px solid var(--hair)}
+  .chips{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;padding:.6rem 1.35rem;max-width:34rem;margin:0 auto}
+  .chips::-webkit-scrollbar{display:none}
+  .chips a{
+    flex:0 0 auto;padding:.32rem .75rem;border:1px solid var(--hair);border-radius:999px;
+    color:var(--muted);text-decoration:none;font-size:.8125rem;white-space:nowrap;
+    transition:background .18s ease,color .18s ease,border-color .18s ease;
+  }
+  .chips a[aria-current="true"]{background:var(--black);border-color:var(--black);color:var(--white)}
+  .chips a:focus-visible{outline:2px solid var(--white);outline-offset:2px}
+
+  /* ================= sections ================= */
+  section{scroll-margin-top:3.5rem;padding-top:2.6rem}
+  .head{display:flex;align-items:baseline;gap:.6rem;padding-bottom:.7rem;border-bottom:1px solid var(--hair)}
+  .head h2{margin:0;font-size:1.15rem;font-weight:700;letter-spacing:.01em}
+  .head span{font-family:var(--serif);font-size:.8125rem;color:var(--dim);letter-spacing:.06em}
+
+  /* ================= items ================= */
+  ul{list-style:none;margin:0;padding:0}
+  li{padding:.85rem 0;border-bottom:1px solid var(--hair);transition:background .15s ease}
+  li:last-child{border-bottom:0}
+  li:active{background:rgba(247,246,239,.04)}
+  .row{display:flex;align-items:baseline;gap:.5rem}
+  .name{font-weight:600;font-size:1.0625rem;letter-spacing:.005em}
+  .dots{flex:1;border-bottom:1px dotted var(--dot);transform:translateY(-.25rem);min-width:1.25rem}
+  .p{
+    width:2.9rem;text-align:left;flex:0 0 auto;
+    font-family:var(--sans);font-weight:600;font-size:.9375rem;
+    font-variant-numeric:tabular-nums;letter-spacing:.02em;
+  }
+  .p.empty{color:var(--dim);font-weight:400}
+
+  .en{
+    display:block;direction:ltr;text-align:right;font-family:var(--serif);
+    font-size:.78rem;color:var(--muted);letter-spacing:.02em;margin-top:.12rem;font-style:italic;
+  }
+  .opts{margin:.3rem 0 0;color:var(--dim);font-size:.8125rem}
+  .opts .en{color:var(--dim);font-size:.72rem;opacity:.85}
+
+  .labels{display:flex;gap:.5rem;margin:.9rem 0 .2rem;color:var(--dim);font-size:.72rem}
+  .labels .dots{border:0}
+  .labels .p{font-family:var(--ar);font-weight:600}
+
+  .out .name,.out .p,.out .en{color:var(--dim)}
+  .out .p{text-decoration:line-through}
+  .flag{font-size:.7rem;color:var(--dim);border:1px solid var(--hair);border-radius:3px;padding:0 .35rem;margin-inline-start:.4rem}
+
+  /* ================= footer ================= */
+  footer{margin-top:3rem;background:var(--black)}
+  footer .wrap{padding:2rem 1.35rem 3rem;color:var(--muted);font-size:.875rem}
+  footer p{margin:.35rem 0}
+  footer b{color:var(--white);font-family:var(--sans);font-variant-numeric:tabular-nums}
+  footer a{color:var(--white)}
+
+  .signoff{display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.4rem}
+  .doodle{width:7rem;height:5.5rem;flex:0 0 auto;cursor:pointer;overflow:visible}
+  .signoff .line{font-size:1rem;color:var(--white);margin:0 0 .4rem}
+  .signoff .sub{font-family:var(--serif);font-size:.78rem;color:var(--dim);font-style:italic;margin:.15rem 0 0;direction:ltr;text-align:right}
+
+  .credit{margin-top:1.4rem;padding-top:1rem;border-top:1px solid rgba(247,246,239,.08);
+          font-family:var(--serif);font-size:.75rem;color:var(--dim);direction:ltr;text-align:right;letter-spacing:.03em}
+  .credit a{color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(180,184,155,.35)}
+  .credit a:hover,.credit a:focus-visible{color:var(--white);border-color:var(--white)}
+
+  /* ================= back to top ================= */
+  #top{
+    position:fixed;bottom:1.1rem;inset-inline-start:1.1rem;z-index:30;
+    width:2.6rem;height:2.6rem;border-radius:50%;
+    background:var(--black);border:1px solid var(--hair);color:var(--white);
+    display:grid;place-items:center;cursor:pointer;
+    opacity:0;transform:scale(.85);pointer-events:none;
+    transition:opacity .25s ease,transform .25s ease;
+  }
+  #top.show{opacity:1;transform:none;pointer-events:auto}
+  #top svg{width:1rem;height:1rem}
+
+  /* ================= motion ================= */
+  @keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+  .bar .mark{animation:rise .5s ease-out both}
+  .bar .tagline{animation:rise .5s ease-out .12s both}
+
+  @keyframes steam{
+    0%{opacity:0;transform:translateY(1px) scaleY(.5)}
+    35%{opacity:.85}
+    100%{opacity:0;transform:translateY(-7px) scaleY(1.15)}
+  }
+  .steam path{transform-origin:bottom;animation:steam 3.4s ease-out infinite}
+  .steam path:nth-child(2){animation-delay:1.1s}
+  .steam path:nth-child(3){animation-delay:2.2s}
+
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes appear{to{opacity:1}}
+  .doodle .pour{stroke-dasharray:40;stroke-dashoffset:40}
+  .doodle .liquid{opacity:0}
+  .doodle.on .pour{animation:draw .9s ease-in forwards}
+  .doodle.on .liquid{animation:appear .5s ease-out .75s forwards}
+
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .doodle .pour{stroke-dashoffset:0}
+    .doodle .liquid{opacity:1}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="mark">
+      <span class="box">F</span><span class="word">UNZ</span>
+      <svg class="bean" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10.5" fill="none" stroke="#F7F6EF" stroke-width="3"/>
+        <path d="M12 3.5c-4 3.5-4 13.5 0 17" fill="none" stroke="#F7F6EF" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="tagline">
+      <p>المنيو · Menu</p>
+      <svg class="cup" viewBox="0 0 28 28" aria-hidden="true" fill="none"
+           stroke="#B4B89B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <g class="steam">
+          <path d="M10 10c1.4-1.2-1.4-2.6 0-4"/>
+          <path d="M14 9.6c1.4-1.2-1.4-3-0-4.6"/>
+          <path d="M18 10c1.4-1.2-1.4-2.6 0-4"/>
+        </g>
+        <path d="M6.5 13.5h13.2v4.2a5 5 0 0 1-5 5h-3.2a5 5 0 0 1-5-5z"/>
+        <path d="M19.9 15.1h1.9a2.2 2.2 0 0 1 0 4.4h-1.6"/>
+        <path d="M5 24.6h16"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<nav><div class="chips" id="chips">{{CHIPS}}</div></nav>
+
+<main class="wrap">
+{{SECTIONS}}
+</main>
+
+<footer>
+  <div class="wrap">
+
+    <div class="signoff">
+      <svg class="doodle" id="doodle" viewBox="0 0 120 92" role="img"
+           aria-label="رسمة لشخص بيصب قهوة" fill="none"
+           stroke="#B4B89B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- head -->
+        <path d="M47 24c0-8 5.5-13.5 13-13.5S73 16 73 24c0 8-5 14-13 14s-13-6-13-14z"/>
+        <path d="M46.5 21c1-8 6-12 13.5-12S73 13 74 21c-3.5-3-7-4.5-14-4.5S50 18 46.5 21z"/>
+        <circle cx="54" cy="24" r="4"/>
+        <circle cx="66" cy="24" r="4"/>
+        <path d="M58 24h4"/>
+        <path d="M55 32c3 2.5 7 2.5 10 0"/>
+        <!-- body -->
+        <path d="M60 38v6"/>
+        <path d="M42 62c0-10 8-18 18-18s18 8 18 18"/>
+        <path d="M42 62v18M78 62v18"/>
+        <path d="M42 80h36"/>
+        <path d="M56 54c2.5 1.5 5.5 1.5 8 0"/>
+        <!-- arm + kettle -->
+        <path d="M42 63c-4-4-6-9-4-13"/>
+        <path d="M38 50l9-5 6 10-9 5z"/>
+        <path d="M47 45l5-3 3 5"/>
+        <!-- arm + cup -->
+        <path d="M78 63c5-3 8-6 9-10"/>
+        <path d="M79 55h12v6a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4z"/>
+        <path d="M91 56.5h1.6a2 2 0 0 1 0 4h-1.4"/>
+        <!-- pour -->
+        <path class="pour" d="M52 52c6 2 17 1 30 2" stroke-dasharray="40"/>
+        <path class="liquid" d="M80.5 59h9" stroke-width="2.4"/>
+      </svg>
+      <div>
+        <p class="line">اطلب وارتاح</p>
+        <p class="sub">Take your time</p>
+      </div>
+    </div>
+
+    <p>واي فاي · Wi-Fi: <b>{{WIFI}}</b></p>
+    <p>للطلب · Orders: <a href="tel:{{PHONE_RAW}}">{{PHONE}}</a></p>
+    <p>آخر تحديث للأسعار: {{UPDATED}}</p>
+    <p class="credit">Powered by <a href="{{TAYEL_URL}}" rel="noopener">Tayel AI Labs</a></p>
+  </div>
+</footer>
+
+<button id="top" aria-label="ارجع لأول المنيو">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<script type="application/ld+json">{{JSONLD}}</script>
+<script>
+  /* active category chip */
+  var links = [].slice.call(document.querySelectorAll('#chips a'));
+  var bar = document.getElementById('chips');
+  var map = {};
+  links.forEach(function (a) { map[a.hash.slice(1)] = a; });
+
+  function setActive(a) {
+    if (!a || a.getAttribute('aria-current') === 'true') return;
+    links.forEach(function (l) { l.removeAttribute('aria-current'); });
+    a.setAttribute('aria-current', 'true');
+    bar.scrollTo({ left: a.offsetLeft - (bar.clientWidth - a.clientWidth) / 2, behavior: 'smooth' });
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) setActive(map[e.target.id]); });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+  document.querySelectorAll('section').forEach(function (s) { io.observe(s); });
+
+  /* the doodle pours when it first comes into view, and again on tap */
+  var doodle = document.getElementById('doodle');
+  var pourWatch = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) doodle.classList.add('on'); });
+  }, { threshold: .6 });
+  pourWatch.observe(doodle);
+
+  doodle.addEventListener('click', function () {
+    doodle.classList.remove('on');
+    void doodle.offsetWidth;
+    doodle.classList.add('on');
+  });
+
+  /* back to top */
+  var top = document.getElementById('top');
+  addEventListener('scroll', function () {
+    top.classList.toggle('show', scrollY > 700);
+  }, { passive: true });
+  top.addEventListener('click', function () { scrollTo({ top: 0, behavior: 'smooth' }); });
+</script>
+
+</body>
+</html>

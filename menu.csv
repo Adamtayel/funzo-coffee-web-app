@@ -1,0 +1,152 @@
+section_ar,section_en,item,item_en,options,options_en,single,double,available
+القهوة,Coffee,قهوة تركي سادة,Turkish Coffee,,,60,80,TRUE
+القهوة,Coffee,قهوة تركي محوج,Spiced Turkish Coffee,,,70,90,TRUE
+القهوة,Coffee,قهوة فرنساوي,French Coffee,,,70,90,TRUE
+القهوة,Coffee,قهوة بندق,Hazelnut Coffee,,,80,100,TRUE
+القهوة,Coffee,قهوة فستق,Pistachio Coffee,,,80,100,TRUE
+القهوة,Coffee,قهوة نوتيلا,Nutella Coffee,,,80,100,TRUE
+القهوة,Coffee,قهوة العميد,Al Ameed Coffee,,,70,90,TRUE
+القهوة,Coffee,اسبريسو,Espresso,,,60,80,TRUE
+القهوة,Coffee,اسبريسو لافادزا,Lavazza Espresso,,,70,90,TRUE
+القهوة,Coffee,ماكياتو,Macchiato,,,80,100,TRUE
+القهوة,Coffee,لاتيه,Latte,,,90,110,TRUE
+القهوة,Coffee,سبانيش لاتيه,Spanish Latte,,,110,130,TRUE
+القهوة,Coffee,لاتيه بنكهات,Flavoured Latte,قرفة - كراميل - بندق - فانيلا,Cinnamon - Caramel - Hazelnut - Vanilla,120,150,TRUE
+القهوة,Coffee,كابتشينو,Cappuccino,,,90,110,TRUE
+القهوة,Coffee,كابتشينو بندق,Hazelnut Cappuccino,,,120,150,TRUE
+القهوة,Coffee,فلات وايت,Flat White,,,90,110,TRUE
+القهوة,Coffee,كورتو,Cortado,,,100,,TRUE
+القهوة,Coffee,كورتو موكا,Mocha Cortado,,,120,140,TRUE
+القهوة,Coffee,موكا,Mocha,,,120,140,TRUE
+القهوة,Coffee,موكا وايت,White Mocha,,,120,140,TRUE
+القهوة,Coffee,نسكافيه كلاسيك,Nescafé Classic,,,90,110,TRUE
+القهوة,Coffee,نسكافيه جولد,Nescafé Gold,,,110,130,TRUE
+القهوة,Coffee,امريكان سادة,Americano,,,90,,TRUE
+القهوة,Coffee,امريكان حليب,Americano with Milk,,,110,,TRUE
+القهوة,Coffee,هوت شوكليت,Hot Chocolate,,,90,110,TRUE
+القهوة,Coffee,هوت شوكليت نوتيلا,Nutella Hot Chocolate,,,110,130,TRUE
+القهوة,Coffee,هوت شوكليت وايت,White Hot Chocolate,,,110,130,TRUE
+القهوة,Coffee,كوفي افوجاتو,Coffee Affogato,,,120,,TRUE
+مشروبات ساخنة,Hot Drinks,شاي ليبتون,Lipton Tea,,,60,,TRUE
+مشروبات ساخنة,Hot Drinks,شاي احمد تي,Ahmad Tea,,,70,,TRUE
+مشروبات ساخنة,Hot Drinks,شاي ايرلي جراي,Earl Grey Tea,,,70,,TRUE
+مشروبات ساخنة,Hot Drinks,شاي اخضر,Green Tea,نعناع - هيل - ليمون - روزبيري - ياسمين - قرفة,Mint - Cardamom - Lemon - Roseberry - Jasmine - Cinnamon,70,,TRUE
+مشروبات ساخنة,Hot Drinks,شاي حليب,Tea with Milk,,,80,,TRUE
+مشروبات ساخنة,Hot Drinks,شاي نكهات,Flavoured Tea,خوخ - مانجو - تفاح - فراولة,Peach - Mango - Apple - Strawberry,80,,TRUE
+مشروبات ساخنة,Hot Drinks,أعشاب,Herbal Infusions,كركديه - ليمون - نعناع - قرفة - جنزبيل ليمون - ينسون,Hibiscus - Lemon - Mint - Cinnamon - Ginger Lemon - Anise,80,,TRUE
+مشروبات ساخنة,Hot Drinks,ليمون ساخن,Hot Lemon,,,80,,TRUE
+مشروبات ساخنة,Hot Drinks,هوت سيدر,Hot Cider,تفاح - قرفة,Apple - Cinnamon,90,,TRUE
+مشروبات ساخنة,Hot Drinks,فيتامين C,Vitamin C,برتقال - قرفة - ليمون - نعناع فريش - عسل,Orange - Cinnamon - Lemon - Fresh Mint - Honey,100,,TRUE
+موخيتو,Mojito,موخيتو ردبول,Red Bull Mojito,,,180,,TRUE
+موخيتو,Mojito,موخيتو,Mojito,فراولة - بلوبيري - باشن فروت - مانجو - كلاسيك - روزبيري,Strawberry - Blueberry - Passion Fruit - Mango - Classic - Roseberry,120,,TRUE
+موخيتو,Mojito,فانيلا كولا,Vanilla Cola,,,100,,TRUE
+موخيتو,Mojito,تشيري كولا,Cherry Cola,,,100,,TRUE
+موخيتو,Mojito,ريد بول,Red Bull,,,110,,TRUE
+موخيتو,Mojito,كان,Can,,,70,,TRUE
+موخيتو,Mojito,صن شاين,Sunshine,,,100,,TRUE
+موخيتو,Mojito,ميكس بيري,Mixed Berry,,,120,,TRUE
+مشروبات باردة,Frappe,كراميل فرابتشينو,Caramel Frappuccino,,,140,,TRUE
+مشروبات باردة,Frappe,ايس كوفي,Iced Coffee,,,120,,TRUE
+مشروبات باردة,Frappe,ايس لاتيه,Iced Latte,,,120,,TRUE
+مشروبات باردة,Frappe,ايس لاتيه بلوبيري,Blueberry Iced Latte,,,140,,TRUE
+مشروبات باردة,Frappe,ايس لاتيه كراميل,Caramel Iced Latte,,,140,,TRUE
+مشروبات باردة,Frappe,ايس لاتيه رمان,Pomegranate Iced Latte,,,140,,TRUE
+مشروبات باردة,Frappe,ايس لاتيه نعناع,Mint Iced Latte,,,140,,TRUE
+مشروبات باردة,Frappe,ايس سبانيش لاتيه,Iced Spanish Latte,,,140,,TRUE
+مشروبات باردة,Frappe,ايس نسكافيه,Iced Nescafé,,,130,,TRUE
+مشروبات باردة,Frappe,ايس موكا,Iced Mocha,,,140,,TRUE
+مشروبات باردة,Frappe,ايس وايت موكا,Iced White Mocha,,,140,,TRUE
+مشروبات باردة,Frappe,ايس شوكولاته,Iced Chocolate,,,110,,TRUE
+مشروبات باردة,Frappe,ايس اوريو,Iced Oreo,,,110,,TRUE
+مشروبات باردة,Frappe,ايس تي خوخ,Peach Iced Tea,,,110,,TRUE
+مشروبات باردة,Frappe,ايس كركديه,Iced Hibiscus,,,110,,TRUE
+مشروبات باردة,Frappe,ايس لاتيه بانانا,Banana Iced Latte,,,140,,TRUE
+مشروبات باردة,Frappe,ايس لاتيه ستروبيري,Strawberry Iced Latte,,,140,,TRUE
+مشروبات باردة,Frappe,ايس لاتيه لوتس,Lotus Iced Latte,,,140,,TRUE
+عصائر,Juices,مانجو,Mango,,,110,,TRUE
+عصائر,Juices,برتقال,Orange,,,100,,TRUE
+عصائر,Juices,فراولة,Strawberry,,,100,,TRUE
+عصائر,Juices,جوافة,Guava,,,100,,TRUE
+عصائر,Juices,موز,Banana,,,100,,TRUE
+عصائر,Juices,موز بالنعناع,Banana with Mint,,,110,,TRUE
+عصائر,Juices,ليمون,Lemon,,,90,,TRUE
+عصائر,Juices,ليمون بالنعناع,Lemon with Mint,,,100,,TRUE
+عصائر,Juices,ليمون بالنعناع باللبن,Lemon Mint with Milk,,,110,,TRUE
+عصائر,Juices,كيوي,Kiwi,,,120,,TRUE
+عصائر,Juices,كيوي ليمون,Kiwi Lemon,,,130,,TRUE
+عصائر,Juices,بطيخ,Watermelon,,,100,,TRUE
+عصائر,Juices,بطيخ بالنعناع,Watermelon with Mint,,,110,,TRUE
+عصائر,Juices,بلح بالشوكولاتة,Dates with Chocolate,,,120,,TRUE
+عصائر,Juices,اناناس,Pineapple,,,110,,TRUE
+عصائر,Juices,كنتالوب,Cantaloupe,,,110,,TRUE
+عصائر,Juices,رمان,Pomegranate,,,100,,TRUE
+عصائر,Juices,خوخ,Peach,,,120,,TRUE
+عصائر,Juices,ميكس عصائر,Mixed Juice,,,140,,TRUE
+ميكسات,Mixed Juices,كيوي - موز,Kiwi - Banana,,,140,,TRUE
+ميكسات,Mixed Juices,فراولة - مانجو,Strawberry - Mango,,,140,,TRUE
+ميكسات,Mixed Juices,فراولة - رمان,Strawberry - Pomegranate,,,140,,TRUE
+ميكسات,Mixed Juices,فراولة - برتقال,Strawberry - Orange,,,140,,TRUE
+ميكسات,Mixed Juices,جوافة - ليمون,Guava - Lemon,,,140,,TRUE
+ميكسات,Mixed Juices,كيوي - بلوبيري,Kiwi - Blueberry,,,140,,TRUE
+ميكسات,Mixed Juices,خوخ - موز,Peach - Banana,,,140,,TRUE
+ميكسات,Mixed Juices,اناناس - جوز هند,Pineapple - Coconut,,,140,,TRUE
+ميكسات,Mixed Juices,مانجو - موز,Mango - Banana,,,140,,TRUE
+ميكسات,Mixed Juices,بلوبيري - موز,Blueberry - Banana,,,140,,TRUE
+ميكسات,Mixed Juices,جوافة - باشن فروت,Guava - Passion Fruit,,,140,,TRUE
+ميكسات,Mixed Juices,موز - باشن فروت,Banana - Passion Fruit,,,140,,TRUE
+ميكسات,Mixed Juices,بلوبيري - ليمون,Blueberry - Lemon,,,140,,TRUE
+سموزي,Smoothies,مانجو,Mango,,,130,,TRUE
+سموزي,Smoothies,كنتالوب,Cantaloupe,,,120,,TRUE
+سموزي,Smoothies,فراولة,Strawberry,,,120,,TRUE
+سموزي,Smoothies,جوافة,Guava,,,120,,TRUE
+سموزي,Smoothies,بلوبيري,Blueberry,,,120,,TRUE
+سموزي,Smoothies,ميكس بيري,Mixed Berry,,,120,,TRUE
+سموزي,Smoothies,بابل جم,Bubble Gum,,,120,,TRUE
+سموزي,Smoothies,بطيخ,Watermelon,,,120,,TRUE
+سموزي,Smoothies,كولا,Cola,,,120,,TRUE
+سموزي,Smoothies,ليمون,Lemon,,,120,,TRUE
+سموزي,Smoothies,ميكس سموزي,Mixed Smoothie,,,140,,TRUE
+سموزي,Smoothies,كيوي,Kiwi,,,140,,TRUE
+ميكس سموزي,Mixed Smoothies,روزبيري - كولا,Roseberry - Cola,,,140,,TRUE
+ميكس سموزي,Mixed Smoothies,بلوبيري - كولا,Blueberry - Cola,,,140,,TRUE
+ميكس سموزي,Mixed Smoothies,بلوبيري - موز,Blueberry - Banana,,,140,,TRUE
+ميكس سموزي,Mixed Smoothies,مانجو - باشن فروت,Mango - Passion Fruit,,,140,,TRUE
+ميكس سموزي,Mixed Smoothies,مانجو - موز,Mango - Banana,,,140,,TRUE
+ميلك شيك,Milk Shake,فانيلا,Vanilla,,,120,,TRUE
+ميلك شيك,Milk Shake,شوكولاتة,Chocolate,,,120,,TRUE
+ميلك شيك,Milk Shake,مانجو,Mango,,,120,,TRUE
+ميلك شيك,Milk Shake,فراولة,Strawberry,,,120,,TRUE
+ميلك شيك,Milk Shake,كراميل,Caramel,,,150,,TRUE
+ميلك شيك,Milk Shake,اوريو,Oreo,,,150,,TRUE
+ميلك شيك,Milk Shake,بابل جم,Bubble Gum,,,150,,TRUE
+ميلك شيك,Milk Shake,بلوبيري,Blueberry,,,150,,TRUE
+ميلك شيك,Milk Shake,جلاكسي / مارس,Galaxy / Mars,,,140,,TRUE
+ميلك شيك,Milk Shake,فشار,Popcorn,,,150,,TRUE
+ميلك شيك,Milk Shake,لوتس,Lotus,,,150,,TRUE
+ميلك شيك,Milk Shake,نسكافيه,Nescafé,,,150,,TRUE
+ميلك شيك,Milk Shake,كوفي,Coffee,,,150,,TRUE
+ميلك شيك,Milk Shake,فستق,Pistachio,,,170,,TRUE
+الزبادي,Yogurt,زبادي,Yogurt,,,100,,TRUE
+الزبادي,Yogurt,زبادي بالفواكه,Fruit Yogurt,فراولة - موز - مانجو,Strawberry - Banana - Mango,120,,TRUE
+الزبادي,Yogurt,زبادي عسل,Honey Yogurt,,,120,,TRUE
+الزبادي,Yogurt,زبادي توت,Berry Yogurt,بلوبيري - روزبيري - ميكس بيري,Blueberry - Roseberry - Mixed Berry,140,,TRUE
+الزبادي,Yogurt,زبادي ميكس,Mixed Yogurt,مانجو - كيوي,Mango - Kiwi,150,,TRUE
+الحلويات,Desserts,براونيز,Brownies,,,100,,TRUE
+الحلويات,Desserts,مولتن شوكولاتة,Chocolate Molten,,,120,,TRUE
+الحلويات,Desserts,تشيز كيك,Cheesecake,,,120,,TRUE
+الحلويات,Desserts,فادج فلوتس,Fudge Floats,,,100,,TRUE
+الحلويات,Desserts,تارت شوكولاتة بندق,Chocolate Hazelnut Tart,,,100,,TRUE
+الحلويات,Desserts,تارت كراميل بندق,Caramel Hazelnut Tart,,,100,,TRUE
+المخبوزات,Bakery,كرواسون سادة,Plain Croissant,,,90,,TRUE
+المخبوزات,Bakery,كرواسون جبنة بيضة,Cheese & Egg Croissant,,,110,,TRUE
+المخبوزات,Bakery,كرواسون جبنة تركي,Cheese & Turkey Croissant,,,110,,TRUE
+المخبوزات,Bakery,كرواسون جبنة شيدر,Cheddar Croissant,,,120,,TRUE
+المخبوزات,Bakery,كرواسون نوتيلا,Nutella Croissant,,,120,,TRUE
+المخبوزات,Bakery,كرواسون لانشون,Luncheon Croissant,,,120,,TRUE
+المخبوزات,Bakery,كرواسون ميكس,Mixed Croissant,,,120,,TRUE
+الإضافات,Extra,فليفر,Flavour,,,30,,TRUE
+الإضافات,Extra,توبينج,Topping,,,35,,TRUE
+الإضافات,Extra,باكت فتلة,Tea Bag,,,15,,TRUE
+الإضافات,Extra,بولة ايس كريم,Ice Cream Scoop,,,30,,TRUE
+الإضافات,Extra,حليب,Milk,,,20,,TRUE
+الإضافات,Extra,مياه معدنية صغيرة,Small Water,,,20,,TRUE
