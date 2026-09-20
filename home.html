@@ -161,7 +161,11 @@
     *,*::before,*::after{animation:none!important;transition:none!important}
     .split span{transform:none}
     .card{opacity:1;transform:none}
-    .marquee{animation:none}
+    .marquee-wrap{overflow:visible}
+    .marquee{
+      animation:none;flex-wrap:wrap;white-space:normal;width:auto;
+      justify-content:center;row-gap:.5rem;
+    }
   }
 
   @media (min-width:640px){
@@ -289,11 +293,12 @@
 <script>
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* marquee content, duplicated once for a seamless loop */
+  /* marquee content: duplicated for a seamless loop, once only when it
+     actually animates — a static reduced-motion view shows each item once */
   var words = ['قهوة مختصة','دونتس طازة','ميلك شيك','عصائر طبيعية','حلويات ومخبوزات','قهوة باردة'];
   var mq = document.getElementById('marquee');
   var html = words.map(function (w) { return '<span>' + w + '</span>'; }).join('');
-  mq.innerHTML = html + html;
+  mq.innerHTML = reduced ? html : html + html;
 
   /* hero glow follows the pointer; ignored on touch / reduced motion */
   if (!reduced && matchMedia('(hover: hover)').matches) {
