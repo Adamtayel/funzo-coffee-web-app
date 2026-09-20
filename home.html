@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Funzo — قهوة و دونتس</title>
-<meta name="description" content="Funzo — قهوة، مشروبات، دونتس وحلويات. شوف المنيو، الموقع، ومواعيدنا.">
+<title>Funzo — قهوة و حلويات</title>
+<meta name="description" content="Funzo — قهوة، مشروبات، وحلويات ومخبوزات. شوف المنيو، الموقع، ومواعيدنا.">
 <meta name="theme-color" content="#111113">
 <meta property="og:title" content="Funzo Coffee">
-<meta property="og:description" content="قهوة و دونتس. شوف المنيو.">
+<meta property="og:description" content="قهوة وحلويات. شوف المنيو.">
 <style>
   :root{
     --bg:#FFFFFF;
@@ -27,6 +27,7 @@
     --yellow:#E7B84C;
     --pink:#EA8FA4;
     --blue:#78C6DC;
+    --olive:#55642F;
 
     --ar:"SF Arabic","Geeza Pro","Noto Naskh Arabic","Droid Arabic Naskh","Segoe UI",system-ui,sans-serif;
     --sans:"Helvetica Neue",Arial,system-ui,sans-serif;
@@ -35,12 +36,22 @@
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%;background:var(--bg)}
   body{
-    margin:0;background:var(--bg);color:var(--ink);
+    margin:0;color:var(--ink);
     font-family:var(--ar);font-size:16px;line-height:1.45;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   .wrap{max-width:34rem;margin:0 auto;padding:0 1.35rem}
   a{color:inherit}
+
+  /* ================= ambient background ================= */
+  .bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .bg span{position:absolute;border-radius:50%;filter:blur(80px);opacity:.16;will-change:transform}
+  .bg .b1{width:24rem;height:24rem;background:var(--yellow);top:-7rem;inset-inline-start:-6rem;animation:drift1 25s ease-in-out infinite}
+  .bg .b2{width:20rem;height:20rem;background:var(--pink);top:45%;inset-inline-end:-7rem;animation:drift2 30s ease-in-out infinite}
+  .bg .b3{width:19rem;height:19rem;background:var(--blue);bottom:-6rem;inset-inline-start:22%;animation:drift3 28s ease-in-out infinite}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(2.5rem,3.5rem) scale(1.15)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-3rem,-2rem) scale(1.1)}}
+  @keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(2rem,-2.5rem) scale(1.2)}}
 
   .strip{height:4px;background:linear-gradient(90deg,var(--yellow) 0 33.33%,var(--pink) 33.33% 66.66%,var(--blue) 66.66% 100%)}
 
@@ -76,7 +87,7 @@
 
   .hero h1{margin:.8rem 0 0;font-size:2.35rem;line-height:1.18;font-weight:800;letter-spacing:.002em}
   .hero h1 .en{display:block;direction:ltr;text-align:right;font-family:var(--serif);font-style:italic;
-                font-weight:400;font-size:1.05rem;color:var(--muted);margin-top:.5rem}
+                font-weight:400;font-size:1.05rem;color:var(--olive);margin-top:.5rem}
   .split{display:inline-block;overflow:hidden;vertical-align:top}
   .split span{display:inline-block;transform:translateY(115%);animation:lineUp .7s cubic-bezier(.2,.7,.15,1) forwards}
 
@@ -118,7 +129,7 @@
   /* ================= features ================= */
   .features{padding:2.8rem 0}
   .features h2{font-size:1.05rem;font-weight:700;margin:0 0 1.4rem;display:flex;align-items:baseline;gap:.5rem}
-  .features h2 .en{font-family:var(--serif);font-size:.78rem;color:var(--dim);font-weight:400}
+  .features h2 .en{font-family:var(--serif);font-size:.78rem;color:var(--olive);font-weight:400}
   .cards{display:grid;gap:.9rem}
   .card{
     display:flex;gap:1rem;align-items:flex-start;padding:1.2rem;border:1px solid var(--hair);border-radius:1rem;
@@ -132,7 +143,7 @@
   .card .ic svg{width:1.3rem;height:1.3rem}
   .card h3{margin:0 0 .2rem;font-size:1rem;font-weight:700}
   .card p{margin:0;color:var(--muted);font-size:.85rem}
-  .card .en{display:block;direction:ltr;text-align:right;font-family:var(--serif);font-style:italic;color:var(--dim);font-size:.75rem;margin-top:.15rem}
+  .card .en{display:block;direction:ltr;text-align:right;font-family:var(--serif);font-style:italic;color:var(--olive);font-size:.75rem;margin-top:.15rem}
 
   /* ================= footer (shared identity) ================= */
   footer{margin-top:1rem;background:var(--black)}
@@ -175,6 +186,7 @@
 </head>
 <body>
 
+<div class="bg" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 <div class="strip"></div>
 <div class="bar">
   <div class="wrap">
@@ -203,13 +215,13 @@
     <span class="orb o3"></span>
   </div>
   <div class="wrap">
-    <p class="eyebrow"><span class="dot"></span>قهوة · دونتس · حلويات</p>
+    <p class="eyebrow"><span class="dot"></span>قهوة · حلويات · مشروبات</p>
     <h1>
       <span class="split"><span style="animation-delay:.05s">قهوتك، على مزاجك</span></span><br>
       <span class="split"><span style="animation-delay:.16s">وأكلة حلوة معاها.</span></span>
-      <span class="en split"><span style="animation-delay:.3s">Coffee &amp; donuts, made to feel like home.</span></span>
+      <span class="en split"><span style="animation-delay:.3s">Coffee &amp; sweets, made to feel like home.</span></span>
     </h1>
-    <p class="lede">فانزو مكان بسيط وقريب من القلب — قهوة مظبوطة، دونتس طازة، وجو يخليك تقعد أكتر من ما نويت.</p>
+    <p class="lede">فانزو مكان بسيط وقريب من القلب — قهوة مظبوطة، حلويات طازة، وجو يخليك تقعد أكتر من ما نويت.</p>
     <div class="cta-row">
       <a class="cta" href="/menu">
         <span>شوف المنيو · View Menu</span>
@@ -256,8 +268,8 @@
           </svg>
         </div>
         <div>
-          <h3>دونتس طازة يوميًا</h3>
-          <p>بتتعمل كل يوم، مفيش تخزين.<span class="en">Fresh donuts, baked daily.</span></p>
+          <h3>حلويات ومخبوزات طازة</h3>
+          <p>بتتحضر كل يوم بعناية.<span class="en">Fresh pastries, made daily.</span></p>
         </div>
       </div>
       <div class="card">
@@ -279,8 +291,8 @@
   <div class="wrap">
     <div class="signoff">
       <div>
-        <p class="line">فانزو — قهوة و دونتس</p>
-        <p class="sub">Funzo — Coffee &amp; Donuts</p>
+        <p class="line">فانزو — قهوة وحلويات</p>
+        <p class="sub">Funzo — Coffee &amp; Sweets</p>
       </div>
     </div>
     <p>واي فاي · Wi-Fi: <b>{{WIFI}}</b></p>
@@ -295,7 +307,7 @@
 
   /* marquee content: duplicated for a seamless loop, once only when it
      actually animates — a static reduced-motion view shows each item once */
-  var words = ['قهوة مختصة','دونتس طازة','ميلك شيك','عصائر طبيعية','حلويات ومخبوزات','قهوة باردة'];
+  var words = ['قهوة مختصة','موخيتو','ميلك شيك','عصائر طبيعية','حلويات ومخبوزات','قهوة باردة'];
   var mq = document.getElementById('marquee');
   var html = words.map(function (w) { return '<span>' + w + '</span>'; }).join('');
   mq.innerHTML = reduced ? html : html + html;

@@ -27,6 +27,7 @@
     --yellow:#E7B84C;
     --pink:#EA8FA4;
     --blue:#78C6DC;
+    --olive:#55642F;
 
     --ar:"SF Arabic","Geeza Pro","Noto Naskh Arabic","Droid Arabic Naskh","Segoe UI",system-ui,sans-serif;
     --sans:"Helvetica Neue",Arial,system-ui,sans-serif;
@@ -35,14 +36,29 @@
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%;background:var(--bg)}
   body{
-    margin:0;background:var(--bg);color:var(--ink);
+    margin:0;color:var(--ink);
     font-family:var(--ar);font-size:16px;line-height:1.45;
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:34rem;margin:0 auto;padding:0 1.35rem}
 
+  /* ================= ambient background ================= */
+  .bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .bg span{position:absolute;border-radius:50%;filter:blur(70px);opacity:.16;will-change:transform}
+  .bg .b1{width:22rem;height:22rem;background:var(--yellow);top:-7rem;inset-inline-start:-6rem;animation:drift1 24s ease-in-out infinite}
+  .bg .b2{width:19rem;height:19rem;background:var(--pink);top:38%;inset-inline-end:-7rem;animation:drift2 29s ease-in-out infinite}
+  .bg .b3{width:18rem;height:18rem;background:var(--blue);bottom:-6rem;inset-inline-start:18%;animation:drift3 27s ease-in-out infinite}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(2.5rem,3.5rem) scale(1.15)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-3rem,-2rem) scale(1.1)}}
+  @keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(2rem,-2.5rem) scale(1.2)}}
+
   /* ================= brand strip ================= */
-  .strip{height:4px;background:linear-gradient(90deg,var(--yellow) 0 33.33%,var(--pink) 33.33% 66.66%,var(--blue) 66.66% 100%)}
+  .strip{
+    height:4px;background-size:200% 100%;
+    background-image:linear-gradient(90deg,var(--yellow) 0 33.33%,var(--pink) 33.33% 66.66%,var(--blue) 66.66% 100%,var(--yellow) 100%);
+    animation:slide 9s linear infinite;
+  }
+  @keyframes slide{to{background-position:-200% 0}}
 
   /* ================= brand bar ================= */
   .bar{background:var(--black);padding:1rem 0}
@@ -70,7 +86,7 @@
   section{scroll-margin-top:3.5rem;padding-top:2.6rem}
   .head{display:flex;align-items:baseline;gap:.6rem;padding-bottom:.7rem;border-bottom:1px solid var(--hair)}
   .head h2{margin:0;font-size:1.15rem;font-weight:700;letter-spacing:.01em}
-  .head span{font-family:var(--serif);font-size:.8125rem;color:var(--muted);letter-spacing:.06em}
+  .head span{font-family:var(--serif);font-size:.8125rem;color:var(--olive);letter-spacing:.06em}
 
   /* ================= items ================= */
   ul{list-style:none;margin:0;padding:0}
@@ -89,10 +105,10 @@
 
   .en{
     display:block;direction:ltr;text-align:right;font-family:var(--serif);
-    font-size:.78rem;color:var(--muted);letter-spacing:.02em;margin-top:.12rem;font-style:italic;
+    font-size:.78rem;color:var(--olive);letter-spacing:.02em;margin-top:.12rem;font-style:italic;
   }
   .opts{margin:.3rem 0 0;color:var(--dim);font-size:.8125rem}
-  .opts .en{color:var(--dim);font-size:.72rem;opacity:.85}
+  .opts .en{color:var(--olive);font-size:.72rem;opacity:.75}
 
   .labels{display:flex;gap:.5rem;margin:.9rem 0 .2rem;color:var(--dim);font-size:.72rem}
   .labels .dots{border:0}
@@ -162,6 +178,7 @@
 </head>
 <body>
 
+<div class="bg" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 <div class="strip"></div>
 <div class="bar">
   <div class="wrap">
