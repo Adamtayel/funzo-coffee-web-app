@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Funzo — قهوة و دونتس</title>
+<meta name="description" content="Funzo — قهوة، مشروبات، دونتس وحلويات. شوف المنيو، الموقع، ومواعيدنا.">
+<meta name="theme-color" content="#111113">
+<meta property="og:title" content="Funzo Coffee">
+<meta property="og:description" content="قهوة و دونتس. شوف المنيو.">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --bg-soft:#F4F4F2;
+    --ink:#17181B;
+    --muted:#6D6E68;
+    --dim:#A6A69F;
+    --hair:rgba(23,24,27,.09);
+    --dot:rgba(23,24,27,.22);
+
+    --black:#111113;
+    --white:#FFFFFF;
+    --muted-dark:rgba(255,255,255,.58);
+    --dim-dark:rgba(255,255,255,.38);
+    --hair-dark:rgba(255,255,255,.14);
+
+    --yellow:#E7B84C;
+    --pink:#EA8FA4;
+    --blue:#78C6DC;
+
+    --ar:"SF Arabic","Geeza Pro","Noto Naskh Arabic","Droid Arabic Naskh","Segoe UI",system-ui,sans-serif;
+    --sans:"Helvetica Neue",Arial,system-ui,sans-serif;
+    --serif:ui-serif,Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;background:var(--bg)}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--ar);font-size:16px;line-height:1.45;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .wrap{max-width:34rem;margin:0 auto;padding:0 1.35rem}
+  a{color:inherit}
+
+  .strip{height:4px;background:linear-gradient(90deg,var(--yellow) 0 33.33%,var(--pink) 33.33% 66.66%,var(--blue) 66.66% 100%)}
+
+  /* ================= brand bar ================= */
+  .bar{background:var(--black);padding:1rem 0}
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between}
+  .mark{display:flex;align-items:center;gap:.5rem}
+  .mark .logo{width:2.15rem;height:1.55rem;display:block;flex:0 0 auto}
+  .mark .word{font-family:var(--sans);font-weight:800;font-size:1.3rem;letter-spacing:.01em;color:var(--white)}
+  .navlink{font-family:var(--serif);font-size:.85rem;color:var(--muted-dark);text-decoration:none;
+            border-bottom:1px solid var(--hair-dark);padding-bottom:.15rem;transition:color .18s ease,border-color .18s ease}
+  .navlink:hover,.navlink:focus-visible{color:var(--white);border-color:var(--white)}
+
+  /* ================= hero ================= */
+  .hero{position:relative;padding:4.2rem 0 3.4rem;overflow:hidden;isolation:isolate}
+  .hero-glow{
+    position:absolute;inset:-20% -10% auto -10%;height:26rem;z-index:-1;pointer-events:none;
+    background:radial-gradient(38rem 22rem at var(--gx,50%) var(--gy,0%),
+      rgba(231,184,76,.16),rgba(234,143,164,.12) 42%,rgba(120,198,220,.10) 68%,transparent 75%);
+    transition:background .4s ease;
+  }
+  .hero-orbits{position:absolute;inset:0;z-index:-1;pointer-events:none}
+  .orb{position:absolute;border-radius:50%;opacity:.5;filter:blur(.5px);will-change:transform}
+  .orb.o1{width:5.4rem;height:5.4rem;background:var(--yellow);top:8%;inset-inline-start:6%}
+  .orb.o2{width:3.6rem;height:3.6rem;background:var(--blue);top:58%;inset-inline-end:8%}
+  .orb.o3{width:2.4rem;height:2.4rem;background:var(--pink);top:20%;inset-inline-end:20%}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.4rem;font-family:var(--serif);font-style:italic;
+    font-size:.8125rem;color:var(--muted);letter-spacing:.04em;
+  }
+  .eyebrow .dot{width:.4rem;height:.4rem;border-radius:50%;background:var(--pink)}
+
+  .hero h1{margin:.8rem 0 0;font-size:2.35rem;line-height:1.18;font-weight:800;letter-spacing:.002em}
+  .hero h1 .en{display:block;direction:ltr;text-align:right;font-family:var(--serif);font-style:italic;
+                font-weight:400;font-size:1.05rem;color:var(--muted);margin-top:.5rem}
+  .split{display:inline-block;overflow:hidden;vertical-align:top}
+  .split span{display:inline-block;transform:translateY(115%);animation:lineUp .7s cubic-bezier(.2,.7,.15,1) forwards}
+
+  .hero p.lede{margin:1.1rem 0 0;max-width:30rem;color:var(--muted);font-size:.95rem}
+
+  .cta-row{display:flex;align-items:center;gap:1rem;margin-top:1.9rem;flex-wrap:wrap}
+  .cta{
+    position:relative;display:inline-flex;align-items:center;gap:.5rem;
+    background:var(--black);color:var(--white);font-family:var(--sans);font-weight:700;font-size:.95rem;
+    padding:.9rem 1.5rem;border-radius:999px;text-decoration:none;overflow:hidden;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1);
+  }
+  .cta::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:linear-gradient(90deg,var(--yellow),var(--pink),var(--blue));
+    opacity:0;transition:opacity .3s ease;
+  }
+  .cta span,.cta svg{position:relative;z-index:1}
+  .cta:hover::before,.cta:focus-visible::before{opacity:1}
+  .cta:hover,.cta:focus-visible{transform:translateY(-2px)}
+  .cta svg{width:1rem;height:1rem;transform:translateX(0);transition:transform .25s ease}
+  .cta:hover svg{transform:translateX(-4px)}
+
+  .cta-secondary{font-family:var(--serif);font-size:.875rem;color:var(--muted);text-decoration:none;
+                  border-bottom:1px dotted var(--dot);padding-bottom:.1rem}
+  .cta-secondary:hover{color:var(--ink)}
+
+  /* ================= marquee ================= */
+  .marquee-wrap{background:var(--bg-soft);border-block:1px solid var(--hair);overflow:hidden;padding:.9rem 0}
+  .marquee{display:flex;gap:2.2rem;white-space:nowrap;width:max-content;animation:scroll 26s linear infinite}
+  .marquee span{font-family:var(--serif);font-style:italic;font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:.5rem}
+  .marquee span::after{content:"•";color:var(--pink);margin-inline-start:2.2rem}
+
+  /* ================= stats ================= */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;padding:2.6rem 0;text-align:center;border-bottom:1px solid var(--hair)}
+  .stat b{display:block;font-family:var(--sans);font-size:1.9rem;font-weight:800;font-variant-numeric:tabular-nums}
+  .stat span{display:block;font-family:var(--serif);font-size:.72rem;color:var(--muted);margin-top:.2rem;letter-spacing:.03em}
+
+  /* ================= features ================= */
+  .features{padding:2.8rem 0}
+  .features h2{font-size:1.05rem;font-weight:700;margin:0 0 1.4rem;display:flex;align-items:baseline;gap:.5rem}
+  .features h2 .en{font-family:var(--serif);font-size:.78rem;color:var(--dim);font-weight:400}
+  .cards{display:grid;gap:.9rem}
+  .card{
+    display:flex;gap:1rem;align-items:flex-start;padding:1.2rem;border:1px solid var(--hair);border-radius:1rem;
+    opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.7,.15,1),transform .6s cubic-bezier(.2,.7,.15,1);
+  }
+  .card.in{opacity:1;transform:none}
+  .card .ic{width:2.6rem;height:2.6rem;border-radius:.7rem;flex:0 0 auto;display:grid;place-items:center}
+  .card:nth-child(1) .ic{background:rgba(231,184,76,.16)}
+  .card:nth-child(2) .ic{background:rgba(234,143,164,.16)}
+  .card:nth-child(3) .ic{background:rgba(120,198,220,.16)}
+  .card .ic svg{width:1.3rem;height:1.3rem}
+  .card h3{margin:0 0 .2rem;font-size:1rem;font-weight:700}
+  .card p{margin:0;color:var(--muted);font-size:.85rem}
+  .card .en{display:block;direction:ltr;text-align:right;font-family:var(--serif);font-style:italic;color:var(--dim);font-size:.75rem;margin-top:.15rem}
+
+  /* ================= footer (shared identity) ================= */
+  footer{margin-top:1rem;background:var(--black)}
+  footer .wrap{padding:2.2rem 1.35rem 3rem;color:var(--muted-dark);font-size:.875rem}
+  footer p{margin:.35rem 0}
+  footer b{color:var(--white);font-family:var(--sans);font-variant-numeric:tabular-nums}
+  footer a{color:var(--white)}
+  .signoff{display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.4rem}
+  .signoff .line{font-size:1.05rem;color:var(--white);margin:0 0 .4rem;font-weight:700}
+  .signoff .sub{font-family:var(--serif);font-size:.78rem;color:var(--dim-dark);font-style:italic;margin:.15rem 0 0;direction:ltr;text-align:right}
+  .credit{margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--hair-dark);
+          font-family:var(--serif);font-size:.75rem;color:var(--dim-dark);direction:ltr;text-align:right;letter-spacing:.03em}
+  .credit a{color:var(--muted-dark);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+  .credit a:hover,.credit a:focus-visible{color:var(--white);border-color:var(--white)}
+
+  @keyframes lineUp{to{transform:none}}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes floatX{0%,100%{transform:translateX(0)}50%{transform:translateX(10px)}}
+  .orb.o1{animation:floatY 7s ease-in-out infinite}
+  .orb.o2{animation:floatX 8.5s ease-in-out infinite}
+  .orb.o3{animation:floatY 6s ease-in-out infinite 1s}
+
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .split span{transform:none}
+    .card{opacity:1;transform:none}
+    .marquee{animation:none}
+  }
+
+  @media (min-width:640px){
+    .hero h1{font-size:2.9rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="strip"></div>
+<div class="bar">
+  <div class="wrap">
+    <div class="mark">
+      <svg class="logo" viewBox="0 0 96 64" aria-hidden="true">
+        <circle cx="22" cy="38" r="19" fill="var(--yellow)"/>
+        <circle cx="74" cy="38" r="19" fill="var(--blue)"/>
+        <circle cx="48" cy="30" r="23" fill="#F3E9DA"/>
+        <circle cx="48" cy="30" r="23" fill="none" stroke="var(--pink)" stroke-width="7"/>
+        <circle cx="48" cy="30" r="7.5" fill="var(--black)"/>
+        <g stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9">
+          <path d="M40 15l2.6 2.6M58 15l-2.6 2.6M35 30h3.6M60.4 30H64M40 45l2.6-2.6M58 45l-2.6-2.6"/>
+        </g>
+      </svg>
+      <span class="word">Funzo</span>
+    </div>
+    <a class="navlink" href="/menu">المنيو · Menu</a>
+  </div>
+</div>
+
+<header class="hero" id="hero">
+  <div class="hero-glow" id="glow"></div>
+  <div class="hero-orbits" aria-hidden="true">
+    <span class="orb o1"></span>
+    <span class="orb o2"></span>
+    <span class="orb o3"></span>
+  </div>
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span>قهوة · دونتس · حلويات</p>
+    <h1>
+      <span class="split"><span style="animation-delay:.05s">قهوتك، على مزاجك</span></span><br>
+      <span class="split"><span style="animation-delay:.16s">وأكلة حلوة معاها.</span></span>
+      <span class="en split"><span style="animation-delay:.3s">Coffee &amp; donuts, made to feel like home.</span></span>
+    </h1>
+    <p class="lede">فانزو مكان بسيط وقريب من القلب — قهوة مظبوطة، دونتس طازة، وجو يخليك تقعد أكتر من ما نويت.</p>
+    <div class="cta-row">
+      <a class="cta" href="/menu">
+        <span>شوف المنيو · View Menu</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <a class="cta-secondary" href="tel:{{PHONE_RAW}}">اطلب تليفون · {{PHONE}}</a>
+    </div>
+  </div>
+</header>
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee" id="marquee"></div>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b data-count="151">0</b><span>صنف · Items</span></div>
+    <div class="stat"><b data-count="13">0</b><span>قسم · Sections</span></div>
+    <div class="stat"><b data-count="7">0</b><span>أيام في الأسبوع · Days</span></div>
+  </div>
+
+  <section class="features">
+    <h2>ليه فانزو؟<span class="en">Why Funzo</span></h2>
+    <div class="cards" id="cards">
+      <div class="card">
+        <div class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B08A2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6.5 13.5h13.2v4.2a5 5 0 0 1-5 5h-3.2a5 5 0 0 1-5-5z"/>
+            <path d="M19.9 15.1h1.9a2.2 2.2 0 0 1 0 4.4h-1.6"/>
+            <path d="M9 5c1-1 1-2 0-3M13 5c1-1 1-2 0-3"/>
+          </svg>
+        </div>
+        <div>
+          <h3>قهوة مختصة</h3>
+          <p>مقادير مظبوطة كل مرة، من صنجل لحد دبل.<span class="en">Specialty coffee, dialed in every time.</span></p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C15E77" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <h3>دونتس طازة يوميًا</h3>
+          <p>بتتعمل كل يوم، مفيش تخزين.<span class="en">Fresh donuts, baked daily.</span></p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3D8FA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a7 7 0 0 0-7 7c0 5.5 7 11 7 11s7-5.5 7-11a7 7 0 0 0-7-7z"/><circle cx="12" cy="10" r="2.4"/>
+          </svg>
+        </div>
+        <div>
+          <h3>واي فاي وجو هادي</h3>
+          <p>مكان تقعد فيه تشتغل أو تقابل حد.<span class="en">Wi-Fi and a calm place to sit.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="signoff">
+      <div>
+        <p class="line">فانزو — قهوة و دونتس</p>
+        <p class="sub">Funzo — Coffee &amp; Donuts</p>
+      </div>
+    </div>
+    <p>واي فاي · Wi-Fi: <b>{{WIFI}}</b></p>
+    <p>للطلب · Orders: <a href="tel:{{PHONE_RAW}}">{{PHONE}}</a></p>
+    <p><a href="/menu" class="navlink" style="border-color:transparent">المنيو الكامل · Full Menu →</a></p>
+    <p class="credit">Powered by <a href="{{TAYEL_URL}}" rel="noopener">Tayel AI Labs</a></p>
+  </div>
+</footer>
+
+<script>
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* marquee content, duplicated once for a seamless loop */
+  var words = ['قهوة مختصة','دونتس طازة','ميلك شيك','عصائر طبيعية','حلويات ومخبوزات','قهوة باردة'];
+  var mq = document.getElementById('marquee');
+  var html = words.map(function (w) { return '<span>' + w + '</span>'; }).join('');
+  mq.innerHTML = html + html;
+
+  /* hero glow follows the pointer; ignored on touch / reduced motion */
+  if (!reduced && matchMedia('(hover: hover)').matches) {
+    var glow = document.getElementById('glow');
+    var hero = document.getElementById('hero');
+    var raf = null;
+    hero.addEventListener('mousemove', function (e) {
+      var x = e.clientX, y = e.clientY - hero.getBoundingClientRect().top;
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        glow.style.setProperty('--gx', x + 'px');
+        glow.style.setProperty('--gy', y + 'px');
+        raf = null;
+      });
+    });
+  }
+
+  /* count-up stats when they enter view */
+  var counters = [].slice.call(document.querySelectorAll('[data-count]'));
+  function animateCount(el) {
+    var target = parseInt(el.dataset.count, 10);
+    if (reduced) { el.textContent = target; return; }
+    var start = null, dur = 900;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min(1, (ts - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var statWatch = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { animateCount(e.target); obs.unobserve(e.target); }
+    });
+  }, { threshold: .6 });
+  counters.forEach(function (c) { statWatch.observe(c); });
+
+  /* feature cards stagger in on scroll */
+  var cards = [].slice.call(document.querySelectorAll('.card'));
+  var cardWatch = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var i = cards.indexOf(e.target);
+      setTimeout(function () { e.target.classList.add('in'); }, i * 110);
+      obs.unobserve(e.target);
+    });
+  }, { threshold: .3 });
+  cards.forEach(function (c) { cardWatch.observe(c); });
+</script>
+
+</body>
+</html>

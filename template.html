@@ -5,48 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>منيو Funzo — Menu</title>
 <meta name="description" content="منيو Funzo — قهوة، مشروبات ساخنة وباردة، عصائر، ميلك شيك، حلويات ومخبوزات. Funzo menu in Arabic and English.">
-<meta name="theme-color" content="#14150F">
+<meta name="theme-color" content="#111113">
 <meta property="og:title" content="منيو Funzo — Menu">
 <meta property="og:description" content="القهوة والمشروبات والحلويات — الأسعار محدّثة.">
 <style>
   :root{
-    --olive:#3B412C;
-    --olive-deep:#2E3322;
-    --black:#14150F;
-    --white:#F7F6EF;
-    --muted:#B4B89B;
-    --dim:#828769;
-    --hair:rgba(247,246,239,.10);
-    --dot:rgba(247,246,239,.20);
+    --bg:#FFFFFF;
+    --bg-soft:#F4F4F2;
+    --ink:#17181B;
+    --muted:#6D6E68;
+    --dim:#A6A69F;
+    --hair:rgba(23,24,27,.09);
+    --dot:rgba(23,24,27,.22);
+
+    --black:#111113;
+    --white:#FFFFFF;
+    --muted-dark:rgba(255,255,255,.58);
+    --dim-dark:rgba(255,255,255,.38);
+    --hair-dark:rgba(255,255,255,.14);
+
+    --yellow:#E7B84C;
+    --pink:#EA8FA4;
+    --blue:#78C6DC;
+
     --ar:"SF Arabic","Geeza Pro","Noto Naskh Arabic","Droid Arabic Naskh","Segoe UI",system-ui,sans-serif;
     --sans:"Helvetica Neue",Arial,system-ui,sans-serif;
     --serif:ui-serif,Georgia,"Times New Roman",serif;
   }
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%;background:var(--olive)}
+  html{-webkit-text-size-adjust:100%;background:var(--bg)}
   body{
-    margin:0;background:var(--olive);color:var(--white);
+    margin:0;background:var(--bg);color:var(--ink);
     font-family:var(--ar);font-size:16px;line-height:1.45;
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:34rem;margin:0 auto;padding:0 1.35rem}
 
+  /* ================= brand strip ================= */
+  .strip{height:4px;background:linear-gradient(90deg,var(--yellow) 0 33.33%,var(--pink) 33.33% 66.66%,var(--blue) 66.66% 100%)}
+
   /* ================= brand bar ================= */
   .bar{background:var(--black);padding:1rem 0}
   .bar .wrap{display:flex;align-items:center;justify-content:space-between}
-  .mark{display:flex;align-items:center;gap:.1rem;direction:ltr}
-  .mark .box{
-    background:var(--white);color:var(--black);font-family:var(--sans);
-    font-weight:800;font-size:1.3rem;line-height:1;padding:.15rem .25rem;border-radius:3px;
-  }
-  .mark .word{font-family:var(--sans);font-weight:800;font-size:1.3rem;letter-spacing:.02em}
-  .mark .bean{width:1.3rem;height:1.3rem;display:block}
+  .mark{display:flex;align-items:center;gap:.5rem}
+  .mark .logo{width:2.15rem;height:1.55rem;display:block;flex:0 0 auto}
+  .mark .word{font-family:var(--sans);font-weight:800;font-size:1.3rem;letter-spacing:.01em;color:var(--white)}
   .tagline{display:flex;align-items:center;gap:.45rem}
-  .tagline p{margin:0;font-family:var(--serif);font-size:.8125rem;color:var(--muted);letter-spacing:.03em}
+  .tagline p{margin:0;font-family:var(--serif);font-size:.8125rem;color:var(--muted-dark);letter-spacing:.03em}
   .cup{width:1.4rem;height:1.4rem;display:block;overflow:visible}
 
   /* ================= sticky chips ================= */
-  nav{position:sticky;top:0;z-index:20;background:var(--olive-deep);border-bottom:1px solid var(--hair)}
+  nav{position:sticky;top:0;z-index:20;background:var(--bg-soft);border-bottom:1px solid var(--hair)}
   .chips{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;padding:.6rem 1.35rem;max-width:34rem;margin:0 auto}
   .chips::-webkit-scrollbar{display:none}
   .chips a{
@@ -55,19 +64,19 @@
     transition:background .18s ease,color .18s ease,border-color .18s ease;
   }
   .chips a[aria-current="true"]{background:var(--black);border-color:var(--black);color:var(--white)}
-  .chips a:focus-visible{outline:2px solid var(--white);outline-offset:2px}
+  .chips a:focus-visible{outline:2px solid var(--black);outline-offset:2px}
 
   /* ================= sections ================= */
   section{scroll-margin-top:3.5rem;padding-top:2.6rem}
   .head{display:flex;align-items:baseline;gap:.6rem;padding-bottom:.7rem;border-bottom:1px solid var(--hair)}
   .head h2{margin:0;font-size:1.15rem;font-weight:700;letter-spacing:.01em}
-  .head span{font-family:var(--serif);font-size:.8125rem;color:var(--dim);letter-spacing:.06em}
+  .head span{font-family:var(--serif);font-size:.8125rem;color:var(--muted);letter-spacing:.06em}
 
   /* ================= items ================= */
   ul{list-style:none;margin:0;padding:0}
   li{padding:.85rem 0;border-bottom:1px solid var(--hair);transition:background .15s ease}
   li:last-child{border-bottom:0}
-  li:active{background:rgba(247,246,239,.04)}
+  li:active{background:rgba(23,24,27,.04)}
   .row{display:flex;align-items:baseline;gap:.5rem}
   .name{font-weight:600;font-size:1.0625rem;letter-spacing:.005em}
   .dots{flex:1;border-bottom:1px dotted var(--dot);transform:translateY(-.25rem);min-width:1.25rem}
@@ -91,11 +100,11 @@
 
   .out .name,.out .p,.out .en{color:var(--dim)}
   .out .p{text-decoration:line-through}
-  .flag{font-size:.7rem;color:var(--dim);border:1px solid var(--hair);border-radius:3px;padding:0 .35rem;margin-inline-start:.4rem}
+  .flag{font-size:.7rem;color:var(--muted);border:1px solid var(--hair);border-radius:3px;padding:0 .35rem;margin-inline-start:.4rem}
 
   /* ================= footer ================= */
   footer{margin-top:3rem;background:var(--black)}
-  footer .wrap{padding:2rem 1.35rem 3rem;color:var(--muted);font-size:.875rem}
+  footer .wrap{padding:2rem 1.35rem 3rem;color:var(--muted-dark);font-size:.875rem}
   footer p{margin:.35rem 0}
   footer b{color:var(--white);font-family:var(--sans);font-variant-numeric:tabular-nums}
   footer a{color:var(--white)}
@@ -103,18 +112,18 @@
   .signoff{display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.4rem}
   .doodle{width:7rem;height:5.5rem;flex:0 0 auto;cursor:pointer;overflow:visible}
   .signoff .line{font-size:1rem;color:var(--white);margin:0 0 .4rem}
-  .signoff .sub{font-family:var(--serif);font-size:.78rem;color:var(--dim);font-style:italic;margin:.15rem 0 0;direction:ltr;text-align:right}
+  .signoff .sub{font-family:var(--serif);font-size:.78rem;color:var(--dim-dark);font-style:italic;margin:.15rem 0 0;direction:ltr;text-align:right}
 
-  .credit{margin-top:1.4rem;padding-top:1rem;border-top:1px solid rgba(247,246,239,.08);
-          font-family:var(--serif);font-size:.75rem;color:var(--dim);direction:ltr;text-align:right;letter-spacing:.03em}
-  .credit a{color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(180,184,155,.35)}
+  .credit{margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--hair-dark);
+          font-family:var(--serif);font-size:.75rem;color:var(--dim-dark);direction:ltr;text-align:right;letter-spacing:.03em}
+  .credit a{color:var(--muted-dark);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
   .credit a:hover,.credit a:focus-visible{color:var(--white);border-color:var(--white)}
 
   /* ================= back to top ================= */
   #top{
     position:fixed;bottom:1.1rem;inset-inline-start:1.1rem;z-index:30;
     width:2.6rem;height:2.6rem;border-radius:50%;
-    background:var(--black);border:1px solid var(--hair);color:var(--white);
+    background:var(--black);border:1px solid var(--hair-dark);color:var(--white);
     display:grid;place-items:center;cursor:pointer;
     opacity:0;transform:scale(.85);pointer-events:none;
     transition:opacity .25s ease,transform .25s ease;
@@ -153,19 +162,26 @@
 </head>
 <body>
 
+<div class="strip"></div>
 <div class="bar">
   <div class="wrap">
     <div class="mark">
-      <span class="box">F</span><span class="word">UNZ</span>
-      <svg class="bean" viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="12" r="10.5" fill="none" stroke="#F7F6EF" stroke-width="3"/>
-        <path d="M12 3.5c-4 3.5-4 13.5 0 17" fill="none" stroke="#F7F6EF" stroke-width="2.2" stroke-linecap="round"/>
+      <svg class="logo" viewBox="0 0 96 64" aria-hidden="true">
+        <circle cx="22" cy="38" r="19" fill="var(--yellow)"/>
+        <circle cx="74" cy="38" r="19" fill="var(--blue)"/>
+        <circle cx="48" cy="30" r="23" fill="#F3E9DA"/>
+        <circle cx="48" cy="30" r="23" fill="none" stroke="var(--pink)" stroke-width="7"/>
+        <circle cx="48" cy="30" r="7.5" fill="var(--black)"/>
+        <g stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9">
+          <path d="M40 15l2.6 2.6M58 15l-2.6 2.6M35 30h3.6M60.4 30H64M40 45l2.6-2.6M58 45l-2.6-2.6"/>
+        </g>
       </svg>
+      <span class="word">Funzo</span>
     </div>
     <div class="tagline">
       <p>المنيو · Menu</p>
       <svg class="cup" viewBox="0 0 28 28" aria-hidden="true" fill="none"
-           stroke="#B4B89B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+           stroke="var(--muted-dark)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
         <g class="steam">
           <path d="M10 10c1.4-1.2-1.4-2.6 0-4"/>
           <path d="M14 9.6c1.4-1.2-1.4-3-0-4.6"/>
@@ -191,7 +207,7 @@
     <div class="signoff">
       <svg class="doodle" id="doodle" viewBox="0 0 120 92" role="img"
            aria-label="رسمة لشخص بيصب قهوة" fill="none"
-           stroke="#B4B89B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+           stroke="var(--dim-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <!-- head -->
         <path d="M47 24c0-8 5.5-13.5 13-13.5S73 16 73 24c0 8-5 14-13 14s-13-6-13-14z"/>
         <path d="M46.5 21c1-8 6-12 13.5-12S73 13 74 21c-3.5-3-7-4.5-14-4.5S50 18 46.5 21z"/>
@@ -214,8 +230,8 @@
         <path d="M79 55h12v6a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4z"/>
         <path d="M91 56.5h1.6a2 2 0 0 1 0 4h-1.4"/>
         <!-- pour -->
-        <path class="pour" d="M52 52c6 2 17 1 30 2" stroke-dasharray="40"/>
-        <path class="liquid" d="M80.5 59h9" stroke-width="2.4"/>
+        <path class="pour" d="M52 52c6 2 17 1 30 2" stroke="var(--yellow)" stroke-dasharray="40"/>
+        <path class="liquid" d="M80.5 59h9" stroke="var(--yellow)" stroke-width="2.4"/>
       </svg>
       <div>
         <p class="line">اطلب وارتاح</p>

@@ -34,6 +34,9 @@ CURRENCY = "EGP"
 TEMPLATE = "template.html"
 OUTPUT = "public/menu/index.html"
 
+HOME_TEMPLATE = "home.html"
+HOME_OUTPUT = "public/index.html"
+
 # If the sheet ever returns fewer rows than this, something is wrong: the
 # publish link was revoked, the sheet was cleared, or Google returned an error
 # page. Fail the build so the last good deployment stays live.
@@ -208,10 +211,33 @@ def render_jsonld(sections):
 def format_date(d):
     return "%d %s %d" % (d.day, MONTHS[d.month - 1], d.year)
 
+
+def build_home():
+    """The homepage is static content, not the sheet — see CLAUDE.md."""
+    with open(HOME_TEMPLATE, encoding="utf-8") as f:
+        page = f.read()
+
+    for key, value in {
+        "{{WIFI}}": html.escape(WIFI),
+        "{{PHONE}}": html.escape(PHONE),
+        "{{PHONE_RAW}}": html.escape(PHONE_RAW),
+        "{{TAYEL_URL}}": html.escape(TAYEL_URL),
+    }.items():
+        page = page.replace(key, value)
+
+    os.makedirs(os.path.dirname(HOME_OUTPUT), exist_ok=True)
+    with open(HOME_OUTPUT, "w", encoding="utf-8") as f:
+        f.write(page)
+
+    print("%s — %.1f KB" % (HOME_OUTPUT, len(page.encode()) / 1024))
+
 # ---------------------------------------------------------------- entry
 
 
 def main():
+    # Static and independent of the sheet, so a bad sheet never blocks it.
+    build_home()
+
     sections = group(load_rows())
     total = sum(len(items) for _, _, items in sections)
 
