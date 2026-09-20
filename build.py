@@ -25,8 +25,8 @@ from datetime import date
 
 CAFE_NAME = "Funzo"
 WIFI = "funzo2026"
-PHONE = "010 0000 0000"
-PHONE_RAW = "+201000000000"
+PHONE = "011 5709 7578"
+PHONE_RAW = "+201157097578"
 SITE_URL = "https://funzo.vercel.app"
 TAYEL_URL = "https://tayel.ai"
 CURRENCY = "EGP"
