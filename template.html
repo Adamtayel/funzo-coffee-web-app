@@ -94,6 +94,13 @@
   }
   .chips a:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
 
+  /* ================= content card ================= */
+  main.wrap{
+    position:relative;z-index:1;background:var(--bg);
+    border-radius:1.5rem 1.5rem 0 0;margin-top:-1rem;padding-top:1.9rem;
+    box-shadow:0 -16px 40px -28px rgba(23,24,27,.3),0 24px 50px -36px rgba(23,24,27,.18);
+  }
+
   /* ================= sections ================= */
   section{scroll-margin-top:3.5rem;padding-top:2.6rem}
   .js section{
@@ -102,7 +109,10 @@
   }
   section.in{opacity:1;transform:none}
   .head{display:flex;align-items:baseline;gap:.6rem;padding-bottom:.7rem;border-bottom:1px solid var(--hair)}
-  .head h2{margin:0;font-size:1.15rem;font-weight:700;letter-spacing:.01em}
+  .head h2{margin:0;font-size:1.15rem;font-weight:700;letter-spacing:.01em;display:flex;align-items:center;gap:.45rem}
+  .head h2::before{content:"";width:.55rem;height:.55rem;border-radius:50%;flex:0 0 auto;background:var(--yellow)}
+  section:nth-of-type(3n+2) .head h2::before{background:var(--pink)}
+  section:nth-of-type(3n+3) .head h2::before{background:var(--blue)}
   .head span{font-family:var(--serif);font-size:.8125rem;color:var(--olive);letter-spacing:.06em}
 
   /* ================= items ================= */
@@ -117,8 +127,10 @@
     width:2.9rem;text-align:left;flex:0 0 auto;
     font-family:var(--sans);font-weight:600;font-size:.9375rem;
     font-variant-numeric:tabular-nums;letter-spacing:.02em;
+    transition:color .2s ease;
   }
   .p.empty{color:var(--dim);font-weight:400}
+  li:active .p:not(.empty){color:var(--pink)}
 
   .en{
     display:block;direction:ltr;text-align:right;font-family:var(--serif);

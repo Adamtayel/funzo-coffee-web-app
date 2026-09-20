@@ -28,7 +28,7 @@ WIFI = "funzo2026"
 PHONE = "011 5709 7578"
 PHONE_RAW = "+201157097578"
 SITE_URL = "https://funzo.vercel.app"
-TAYEL_URL = "https://tayel.ai"
+TAYEL_URL = "https://tayel.net"
 CURRENCY = "EGP"
 
 TEMPLATE = "template.html"
