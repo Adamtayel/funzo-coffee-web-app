@@ -13,7 +13,7 @@
   :root{
     --bg:#FFFFFF;
     --bg-soft:#F4F4F2;
-    --ink:#17181B;
+    --ink:#0C0D0F;
     --muted:#6D6E68;
     --dim:#A6A69F;
     --hair:rgba(23,24,27,.09);
@@ -28,7 +28,7 @@
     --yellow:#E7B84C;
     --pink:#EA8FA4;
     --blue:#78C6DC;
-    --olive:#55642F;
+    --olive:#5C7A1E;
     --navy:#1E3A5C;
 
     --ar:"SF Arabic","Geeza Pro","Noto Naskh Arabic","Droid Arabic Naskh","Segoe UI",system-ui,sans-serif;
@@ -113,7 +113,7 @@
   .head h2::before{content:"";width:.55rem;height:.55rem;border-radius:50%;flex:0 0 auto;background:var(--yellow)}
   section:nth-of-type(3n+2) .head h2::before{background:var(--pink)}
   section:nth-of-type(3n+3) .head h2::before{background:var(--blue)}
-  .head span{font-family:var(--serif);font-size:.8125rem;color:var(--olive);letter-spacing:.06em}
+  .head span{font-family:var(--serif);font-size:.8125rem;color:var(--olive);letter-spacing:.06em;font-weight:600}
 
   /* ================= items ================= */
   ul{list-style:none;margin:0;padding:0}
@@ -121,7 +121,7 @@
   li:last-child{border-bottom:0}
   li:active{background:rgba(23,24,27,.04)}
   .row{display:flex;align-items:baseline;gap:.5rem}
-  .name{font-weight:600;font-size:1.0625rem;letter-spacing:.005em}
+  .name{font-weight:700;font-size:1.0625rem;letter-spacing:.005em;color:var(--ink)}
   .dots{flex:1;border-bottom:1px dotted var(--dot);transform:translateY(-.25rem);min-width:1.25rem}
   .p{
     width:2.9rem;text-align:left;flex:0 0 auto;
@@ -134,7 +134,8 @@
 
   .en{
     display:block;direction:ltr;text-align:right;font-family:var(--serif);
-    font-size:.78rem;color:var(--olive);letter-spacing:.02em;margin-top:.12rem;font-style:italic;
+    font-size:.78rem;color:var(--olive);letter-spacing:.02em;margin-top:.12rem;
+    font-style:italic;font-weight:600;
   }
   .opts{margin:.3rem 0 0;color:var(--dim);font-size:.8125rem}
   .opts .en{color:var(--olive);font-size:.72rem;opacity:.75}
