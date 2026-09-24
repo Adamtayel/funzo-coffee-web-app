@@ -24,22 +24,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Not configured yet is a skip, not a failure — a failing schedule would
+      # email the repo owner every 5 minutes.
       - name: Fetch the sheet
+        id: fetch
         env:
           SHEET_CSV_URL: ${{ secrets.SHEET_CSV_URL }}
         run: |
           if [ -z "$SHEET_CSV_URL" ]; then
-            echo "::error::Repository secret SHEET_CSV_URL is not set."
-            exit 1
+            echo "::warning::Repository secret SHEET_CSV_URL is not set — skipping."
+            exit 0
           fi
           curl -fsSL --retry 3 "${SHEET_CSV_URL}&cb=$(date +%s)" -o sheet.csv
+          echo "ok=true" >> "$GITHUB_OUTPUT"
 
       # Same guard the Vercel build uses: a half-empty or broken sheet stops
       # here, so nothing is committed and the live menu stays as it is.
       - name: Validate
+        if: steps.fetch.outputs.ok == 'true'
         run: python3 build.py sheet.csv
 
       - name: Commit if prices changed
+        if: steps.fetch.outputs.ok == 'true'
         run: |
           tr -d '\r' < sheet.csv | awk 1 > menu.csv
           rm sheet.csv
