@@ -67,17 +67,23 @@ The menu lives at `/menu`. `/` redirects there until a homepage exists.
 
 1. Vercel → Project Settings → Git → Deploy Hooks → create a hook named
    `sheet-edit` on `main` → copy the URL.
-2. In the sheet: Extensions → Apps Script:
+2. In the sheet: Extensions → Apps Script. Replace everything in `Code.gs`
+   with the contents of [`apps-script.js`](apps-script.js), and paste the
+   deploy hook URL into `DEPLOY_HOOK` at the top. Save.
+3. Triggers (clock icon) → Add Trigger → function `onMenuEdit` → event source
+   *From spreadsheet* → event type *On edit* → Save. Approve the permission
+   prompt (it needs to call the deploy hook and schedule timers).
+4. Reload the sheet. A new menu, **الموقع → حدّث الموقع دلوقتي**, appears —
+   that forces a rebuild immediately.
 
-```javascript
-function onMenuEdit() {
-  UrlFetchApp.fetch('PASTE_DEPLOY_HOOK_URL', { method: 'post' });
-}
-```
+Edit a price and the page updates about 1–2 minutes after the owner stops
+typing, with a second rebuild ~6 minutes later as a guarantee. Google
+republishes the CSV with a delay after edits, which is why one rebuild alone
+can occasionally pick up the old price. `build.py` also adds a cache-busting
+parameter to the CSV fetch so Google's 5-minute CDN cache is never the issue.
 
-3. Triggers → Add Trigger → `onMenuEdit` → From spreadsheet → On edit.
-
-Edit a price, and the page is live about a minute later.
+To check it worked: the menu footer shows "آخر تحديث للأسعار" with the date
+of the last successful build, and Vercel → Deployments lists each rebuild.
 
 ---
 

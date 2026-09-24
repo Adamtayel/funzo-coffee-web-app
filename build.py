@@ -18,6 +18,7 @@ import io
 import json
 import os
 import sys
+import time
 import urllib.request
 from datetime import date
 
@@ -69,7 +70,10 @@ def load_rows():
         sys.exit("SHEET_CSV_URL is not set. Pass a local CSV path to test:\n"
                  "    python3 build.py menu.csv")
 
-    with urllib.request.urlopen(url, timeout=25) as r:
+    # Google serves the published CSV with a 5-minute cache. A unique query
+    # string skips that cache, so a rebuild right after an edit sees the edit.
+    fresh = "%s%scb=%d" % (url, "&" if "?" in url else "?", time.time())
+    with urllib.request.urlopen(fresh, timeout=25) as r:
         text = r.read().decode("utf-8-sig")
 
     if "<html" in text[:400].lower():
