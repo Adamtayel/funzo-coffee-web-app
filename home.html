@@ -350,7 +350,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="mark" href="/" aria-label="Funzo">
+    <a class="mark" href="{{HOME_URL}}" aria-label="Funzo">
       <svg class="logo" viewBox="0 0 96 64" aria-hidden="true">
         <circle cx="22" cy="38" r="19" fill="var(--yellow)"/>
         <circle cx="74" cy="38" r="19" fill="var(--blue)"/>
@@ -366,7 +366,7 @@
     <nav aria-label="Main">
       <a class="hide-sm" href="#explore">الأقسام</a>
       <a class="hide-sm" href="tel:{{PHONE_RAW}}">اتصل بينا</a>
-      <a class="pill" href="/menu">المنيو</a>
+      <a class="pill" href="{{MENU_URL}}">المنيو</a>
     </nav>
   </div>
 </header>
@@ -382,7 +382,7 @@
       </h1>
       <p class="lede">فانزو مكان قريب من القلب — قهوة مظبوطة، حلويات طازة، وجو يخليك تقعد أكتر من ما نويت.</p>
       <div class="cta-row">
-        <a class="cta" href="/menu">
+        <a class="cta" href="{{MENU_URL}}">
           <span>شوف المنيو · View Menu</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -439,7 +439,7 @@
   <section class="block" id="explore">
     <div class="block-head reveal">
       <h2>استكشف المنيو<span class="en">Explore the menu</span></h2>
-      <a href="/menu">المنيو كله ←</a>
+      <a href="{{MENU_URL}}">المنيو كله ←</a>
     </div>
     <div class="cats" id="cats">
 {{CATEGORIES}}
@@ -492,7 +492,7 @@
   <div class="closer reveal">
     <h2>جاهز تطلب؟<span class="en">Ready to order?</span></h2>
     <div class="cta-row">
-      <a class="cta" href="/menu">
+      <a class="cta" href="{{MENU_URL}}">
         <span>افتح المنيو · Open the menu</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -511,7 +511,7 @@
 <footer>
   <div class="wrap">
     <div class="about">
-      <a class="mark" href="/" aria-label="Funzo">
+      <a class="mark" href="{{HOME_URL}}" aria-label="Funzo">
         <svg class="logo" viewBox="0 0 96 64" aria-hidden="true">
           <circle cx="22" cy="38" r="19" fill="var(--yellow)"/>
           <circle cx="74" cy="38" r="19" fill="var(--blue)"/>
@@ -526,9 +526,9 @@
     <div>
       <h4>المنيو</h4>
       <ul>
-        <li><a href="/menu">المنيو كامل</a></li>
-        <li><a href="/menu#coffee">القهوة</a></li>
-        <li><a href="/menu#desserts">الحلويات</a></li>
+        <li><a href="{{MENU_URL}}">المنيو كامل</a></li>
+        <li><a href="{{MENU_URL}}#coffee">القهوة</a></li>
+        <li><a href="{{MENU_URL}}#desserts">الحلويات</a></li>
       </ul>
     </div>
     <div>

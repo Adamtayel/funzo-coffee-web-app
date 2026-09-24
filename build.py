@@ -31,6 +31,16 @@ PHONE = "011 5709 7578"
 PHONE_RAW = "+201157097578"
 SITE_URL = "https://funzo.vercel.app"
 TAYEL_URL = "https://tayel.net"
+
+# Where each page lives. Relative paths work on any single domain, which is
+# the setup today. Once the custom domain is connected, switch both to
+# absolute URLs so the menu subdomain can link back to the main site, e.g.
+#   HOME_URL = "https://funzo.cc"
+#   MENU_URL = "https://menu.funzo.cc"
+# (and set SITE_URL to HOME_URL). vercel.json already serves the menu at
+# the root of any "menu." host, whatever the domain ends up being.
+HOME_URL = "/"
+MENU_URL = "/menu"
 CURRENCY = "EGP"
 
 TEMPLATE = "template.html"
@@ -268,11 +278,11 @@ def render_categories(sections):
     tiles = []
     for sid, (name_ar, name_en, items) in zip(section_ids(sections), sections):
         tiles.append(
-            '<a class="cat" href="/menu#%s"><span class="cat-ic">%s</span>'
+            '<a class="cat" href="%s#%s"><span class="cat-ic">%s</span>'
             '<span class="cat-t"><b>%s</b><i>%s</i></span>'
             '<em>%d</em></a>'
-            % (sid, icon(sid), html.escape(name_ar), html.escape(name_en),
-               len(items)))
+            % (html.escape(MENU_URL), sid, icon(sid), html.escape(name_ar),
+               html.escape(name_en), len(items)))
     return "\n".join(tiles)
 
 
@@ -306,6 +316,8 @@ def main():
     shared = {
         "{{ITEM_COUNT}}": str(total),
         "{{SECTION_COUNT}}": str(len(sections)),
+        "{{HOME_URL}}": html.escape(HOME_URL),
+        "{{MENU_URL}}": html.escape(MENU_URL),
         "{{WIFI}}": html.escape(WIFI),
         "{{PHONE}}": html.escape(PHONE),
         "{{PHONE_RAW}}": html.escape(PHONE_RAW),

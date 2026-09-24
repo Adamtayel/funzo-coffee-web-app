@@ -4,6 +4,13 @@
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "menu\\..+" }],
+      "destination": "/menu"
+    }
+  ],
   "headers": [
     {
       "source": "/menu",
