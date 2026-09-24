@@ -73,6 +73,56 @@
   .tagline{display:flex;align-items:center;gap:.45rem}
   .tagline p{margin:0;font-family:var(--serif);font-size:.8125rem;color:var(--muted-dark);letter-spacing:.03em}
   .cup{width:1.4rem;height:1.4rem;display:block;overflow:visible}
+  a.mark{text-decoration:none}
+  a.mark:focus-visible{outline:2px solid var(--white);outline-offset:4px;border-radius:.4rem}
+
+  ::selection{background:rgba(234,143,164,.35)}
+
+  /* film grain over the ambient color — keeps the gradients from looking flat */
+  .bg::after{
+    content:"";position:absolute;inset:0;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ================= scroll progress ================= */
+  #progress{
+    position:fixed;top:0;inset-inline:0;height:3px;z-index:40;pointer-events:none;
+    background:linear-gradient(90deg,var(--yellow),var(--pink),var(--blue));
+    transform:scaleX(0);transform-origin:right;
+  }
+
+  /* ================= intro + search ================= */
+  .intro{padding:2rem 0 2.1rem}
+  .kicker{
+    margin:0;display:inline-flex;align-items:center;gap:.45rem;font-family:var(--sans);
+    font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);direction:ltr;
+  }
+  .kicker i{width:.45rem;height:.45rem;border-radius:50%;background:var(--pink);box-shadow:0 0 0 4px rgba(234,143,164,.2)}
+  .intro h1{margin:.55rem 0 0;font-size:2.6rem;line-height:1.05;font-weight:800;letter-spacing:-.005em}
+  .intro h1 span{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.5rem;color:var(--olive);margin-inline-start:.4rem}
+  .meta{margin:.6rem 0 0;color:var(--muted);font-size:.85rem;display:flex;flex-wrap:wrap;gap:.3rem .9rem}
+  .meta b{color:var(--ink);font-family:var(--sans);font-variant-numeric:tabular-nums}
+
+  .search{
+    position:relative;display:flex;align-items:center;margin-top:1.3rem;
+    background:rgba(255,255,255,.88);border:1.5px solid var(--hair);border-radius:1rem;
+    box-shadow:0 12px 30px -22px rgba(23,24,27,.45);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    transition:border-color .2s ease,box-shadow .2s ease;
+  }
+  .search:focus-within{border-color:var(--navy);box-shadow:0 0 0 4px rgba(30,58,92,.1),0 12px 30px -22px rgba(23,24,27,.45)}
+  .search svg{width:1.15rem;height:1.15rem;flex:0 0 auto;margin-inline-start:.95rem;color:var(--muted)}
+  .search input{
+    flex:1;min-width:0;border:0;background:transparent;outline:0;padding:.95rem .7rem;
+    font:inherit;font-size:1rem;color:var(--ink);
+  }
+  .search input::placeholder{color:var(--dim)}
+  .search input::-webkit-search-cancel-button{display:none}
+  .search button{
+    border:0;background:var(--bg-soft);color:var(--muted);width:1.9rem;height:1.9rem;border-radius:50%;
+    margin-inline-end:.6rem;cursor:pointer;font-size:1.1rem;line-height:1;display:grid;place-items:center;
+  }
+  .search button[hidden]{display:none}
 
   /* ================= sticky chips ================= */
   nav{
@@ -108,12 +158,20 @@
     transition:opacity .5s cubic-bezier(.2,.7,.15,1),transform .5s cubic-bezier(.2,.7,.15,1);
   }
   section.in{opacity:1;transform:none}
-  .head{display:flex;align-items:baseline;gap:.6rem;padding-bottom:.7rem;border-bottom:1px solid var(--hair)}
-  .head h2{margin:0;font-size:1.15rem;font-weight:700;letter-spacing:.01em;display:flex;align-items:center;gap:.45rem}
-  .head h2::before{content:"";width:.55rem;height:.55rem;border-radius:50%;flex:0 0 auto;background:var(--yellow)}
-  section:nth-of-type(3n+2) .head h2::before{background:var(--pink)}
-  section:nth-of-type(3n+3) .head h2::before{background:var(--blue)}
-  .head span{font-family:var(--serif);font-size:.8125rem;color:var(--olive);letter-spacing:.06em;font-weight:600}
+  .head{display:flex;align-items:center;gap:.6rem;padding-bottom:.8rem;border-bottom:1px solid var(--hair)}
+  .head .ic{
+    width:2.1rem;height:2.1rem;border-radius:.7rem;flex:0 0 auto;display:grid;place-items:center;
+    background:rgba(231,184,76,.18);color:#9A7420;
+  }
+  section:nth-of-type(3n+2) .head .ic{background:rgba(234,143,164,.18);color:#B24D67}
+  section:nth-of-type(3n+3) .head .ic{background:rgba(120,198,220,.2);color:#2E7C95}
+  .head .ic svg{width:1.2rem;height:1.2rem}
+  .head h2{margin:0;font-size:1.2rem;font-weight:800;letter-spacing:.01em}
+  .head .sub{font-family:var(--serif);font-size:.8125rem;color:var(--olive);letter-spacing:.06em;font-weight:600;font-style:italic}
+  .head .count{
+    margin-inline-start:auto;font-style:normal;font-size:.7rem;font-weight:700;color:var(--muted);
+    background:var(--bg-soft);border:1px solid var(--hair);border-radius:999px;padding:.12rem .55rem;white-space:nowrap;
+  }
 
   /* ================= items ================= */
   ul{list-style:none;margin:0;padding:0}
@@ -146,14 +204,44 @@
 
   .out .name,.out .p,.out .en{color:var(--dim)}
   .out .p{text-decoration:line-through}
-  .flag{font-size:.7rem;color:var(--muted);border:1px solid var(--hair);border-radius:3px;padding:0 .35rem;margin-inline-start:.4rem}
+  .flag{
+    display:inline-block;vertical-align:middle;font-size:.66rem;font-weight:700;color:#B24D67;
+    background:rgba(234,143,164,.14);border-radius:999px;padding:.05rem .5rem;margin-inline-start:.45rem;
+  }
+  @media (hover:hover){
+    li{border-radius:.6rem;margin-inline:-.6rem;padding-inline:.6rem}
+    li:hover{background:rgba(23,24,27,.028)}
+    li:hover .dots{border-bottom-color:var(--olive)}
+  }
+
+  /* ================= search results ================= */
+  .empty{text-align:center;padding:3rem 0 1rem;color:var(--muted)}
+  .empty b{display:block;font-size:1.05rem;color:var(--ink);margin-bottom:.2rem}
+  .empty .en{text-align:center}
 
   /* ================= footer ================= */
-  footer{margin-top:3rem;background:var(--black)}
-  footer .wrap{padding:2rem 1.35rem 3rem;color:var(--muted-dark);font-size:.875rem}
+  footer{margin-top:3rem;background:var(--black);border-radius:1.5rem 1.5rem 0 0}
+  footer .wrap{padding:2.2rem 1.35rem 5.5rem;color:var(--muted-dark);font-size:.875rem}
   footer p{margin:.35rem 0}
   footer b{color:var(--white);font-family:var(--sans);font-variant-numeric:tabular-nums}
   footer a{color:var(--white)}
+
+  .info{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+  .info li{
+    display:flex;align-items:center;gap:.8rem;padding:.8rem .9rem;margin:0;border:0;
+    background:rgba(255,255,255,.05);border:1px solid var(--hair-dark);border-radius:.9rem;
+  }
+  .info li:hover{background:rgba(255,255,255,.07)}
+  .info .ic{width:2rem;height:2rem;border-radius:.6rem;display:grid;place-items:center;flex:0 0 auto;background:rgba(255,255,255,.08);color:var(--white)}
+  .info .ic svg{width:1rem;height:1rem}
+  .info small{display:block;font-size:.7rem;color:var(--dim-dark)}
+  .info span{color:var(--white);font-weight:600}
+  .info a{text-decoration:none}
+  .home-link{
+    display:inline-flex;align-items:center;gap:.4rem;margin-top:1.1rem;text-decoration:none;
+    font-size:.8rem;color:var(--muted-dark)!important;
+  }
+  .home-link:hover{color:var(--white)!important}
 
   .signoff{display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.4rem}
   .doodle{width:7rem;height:5.5rem;flex:0 0 auto;cursor:pointer;overflow:visible}
@@ -228,10 +316,11 @@
 <body>
 
 <div class="bg" aria-hidden="true"><div class="field" id="bgField"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span></div></div>
+<div id="progress" aria-hidden="true"></div>
 <div class="strip"></div>
 <div class="bar">
   <div class="wrap">
-    <div class="mark">
+    <a class="mark" href="/" aria-label="Funzo — الرئيسية">
       <svg class="logo" viewBox="0 0 96 64" aria-hidden="true">
         <circle cx="22" cy="38" r="19" fill="var(--yellow)"/>
         <circle cx="74" cy="38" r="19" fill="var(--blue)"/>
@@ -243,7 +332,7 @@
         </g>
       </svg>
       <span class="word">Funzo</span>
-    </div>
+    </a>
     <div class="tagline">
       <p>المنيو · Menu</p>
       <svg class="cup" viewBox="0 0 28 28" aria-hidden="true" fill="none"
@@ -261,10 +350,34 @@
   </div>
 </div>
 
+<header class="intro">
+  <div class="wrap">
+    <p class="kicker"><i></i>Funzo Coffee</p>
+    <h1>المنيو<span>Menu</span></h1>
+    <p class="meta">
+      <span><b>{{ITEM_COUNT}}</b> صنف</span>
+      <span><b>{{SECTION_COUNT}}</b> قسم</span>
+      <span>الأسعار بالجنيه المصري</span>
+    </p>
+    <label class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+      </svg>
+      <input id="q" type="search" placeholder="دوّر على مشروبك · Search the menu" autocomplete="off" enterkeyhint="search" aria-label="دوّر في المنيو">
+      <button type="button" id="qClear" aria-label="امسح البحث" hidden>×</button>
+    </label>
+  </div>
+</header>
+
 <nav><div class="chips" id="chips">{{CHIPS}}</div></nav>
 
 <main class="wrap">
 {{SECTIONS}}
+<div class="empty" id="empty" hidden>
+  <b>مفيش حاجة بالاسم ده</b>
+  جرّب كلمة تانية
+  <span class="en">No matches — try another word.</span>
+</div>
 </main>
 
 <footer>
@@ -305,9 +418,21 @@
       </div>
     </div>
 
-    <p>واي فاي · Wi-Fi: <b>{{WIFI}}</b></p>
-    <p>للطلب · Orders: <a href="tel:{{PHONE_RAW}}"><bdi dir="ltr">{{PHONE}}</bdi></a></p>
-    <p>آخر تحديث للأسعار: {{UPDATED}}</p>
+    <ul class="info">
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg></span>
+        <div><small>واي فاي · Wi-Fi</small><b>{{WIFI}}</b></div>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 4h4l2 5-2.5 1.5a11 11 0 0 0 5.5 5.5L15 13l5 2v4a2 2 0 0 1-2.2 2A17 17 0 0 1 2.5 6.2 2 2 0 0 1 4.5 4z"/></svg></span>
+        <div><small>للطلب · Orders</small><a href="tel:{{PHONE_RAW}}"><span><bdi dir="ltr">{{PHONE}}</bdi></span></a></div>
+      </li>
+      <li>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <div><small>آخر تحديث للأسعار · Prices updated</small><span>{{UPDATED}}</span></div>
+      </li>
+    </ul>
+    <a class="home-link" href="/">الرئيسية · Home</a>
     <p class="credit">Powered by <a href="{{TAYEL_URL}}" rel="noopener">Tayel AI Labs</a></p>
   </div>
 </footer>
@@ -380,12 +505,57 @@
     doodle.classList.add('on');
   });
 
-  /* back to top */
+  /* back to top + reading progress */
   var topBtn = document.getElementById('top');
+  var progress = document.getElementById('progress');
+  var ticking2 = false;
   addEventListener('scroll', function () {
-    topBtn.classList.toggle('show', scrollY > 700);
+    if (ticking2) return;
+    ticking2 = true;
+    requestAnimationFrame(function () {
+      var max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.transform = 'scaleX(' + (max > 0 ? scrollY / max : 0) + ')';
+      topBtn.classList.toggle('show', scrollY > 700);
+      ticking2 = false;
+    });
   }, { passive: true });
   topBtn.addEventListener('click', function () { scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  /* search: Arabic spelling variants (أ/إ/آ, ة/ه, ى/ي, tashkeel) match */
+  function norm(s) {
+    return s.toLowerCase()
+      .replace(/[ً-ْـ]/g, '')
+      .replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي')
+      .replace(/\s+/g, ' ').trim();
+  }
+  var q = document.getElementById('q');
+  var qClear = document.getElementById('qClear');
+  var empty = document.getElementById('empty');
+  var sections = [].slice.call(document.querySelectorAll('main section'));
+  var rows = sections.map(function (s) {
+    return [].slice.call(s.querySelectorAll('li')).map(function (li) {
+      return { el: li, text: norm(li.textContent) };
+    });
+  });
+
+  function filter() {
+    var v = norm(q.value), found = false;
+    sections.forEach(function (s, i) {
+      var n = 0;
+      rows[i].forEach(function (r) {
+        var hit = !v || r.text.indexOf(v) > -1;
+        r.el.hidden = !hit;
+        if (hit) n++;
+      });
+      s.hidden = n === 0;
+      if (n) { found = true; s.classList.add('in'); }
+    });
+    empty.hidden = found;
+    qClear.hidden = !v;
+  }
+  q.addEventListener('input', filter);
+  q.addEventListener('keydown', function (e) { if (e.key === 'Enter') q.blur(); });
+  qClear.addEventListener('click', function () { q.value = ''; filter(); q.focus(); });
 </script>
 
 </body>
