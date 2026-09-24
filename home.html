@@ -191,14 +191,15 @@
   }
   .marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--black),rgba(17,17,19,0))}
   .marquee-wrap::after{right:0;background:linear-gradient(270deg,var(--black),rgba(17,17,19,0))}
-  .marquee{display:flex;align-items:center;white-space:nowrap;width:max-content;animation:scroll 45s linear infinite}
+  .marquee{display:flex;align-items:center;white-space:nowrap;width:max-content;animation:scroll 41s linear infinite}
   .marquee-wrap:hover .marquee{animation-play-state:paused}
   .marquee span{display:flex;align-items:baseline;gap:.55rem;font-size:1rem;font-weight:700;color:var(--white);letter-spacing:.01em}
   .marquee span i{font-family:var(--serif);font-style:italic;font-weight:400;font-size:.82rem;color:var(--muted-dark);direction:ltr}
   .marquee span::after{content:"✦";font-size:.7rem;color:var(--yellow);margin-inline:2rem;align-self:center}
   .marquee span:nth-child(3n+2)::after{color:var(--pink)}
   .marquee span:nth-child(3n+3)::after{color:var(--blue)}
-  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  /* RTL: the row overflows to the left, so it travels right to bring later items in */
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(50%)}}
 
   /* ================= section heads ================= */
   .block{padding:3.4rem 0 0}
