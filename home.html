@@ -181,12 +181,23 @@
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
   /* ================= marquee ================= */
-  .marquee-wrap{background:var(--black);overflow:hidden;padding:1rem 0;transform:rotate(-1.2deg);margin:1rem -1rem;box-shadow:0 16px 30px -24px rgba(17,17,19,.6)}
-  .marquee{display:flex;gap:2.4rem;white-space:nowrap;width:max-content;animation:scroll 30s linear infinite}
-  .marquee span{font-size:.95rem;font-weight:700;color:var(--white);display:flex;align-items:center}
-  .marquee span::after{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--yellow);margin-inline-start:2.4rem}
-  .marquee span:nth-child(3n+2)::after{background:var(--pink)}
-  .marquee span:nth-child(3n+3)::after{background:var(--blue)}
+  .marquee-wrap{
+    position:relative;overflow:hidden;margin-top:1rem;padding:1.15rem 0;background:var(--black);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 -1px 0 rgba(255,255,255,.07);
+  }
+  /* soft fade at both edges so words glide in and out instead of being cut */
+  .marquee-wrap::before,.marquee-wrap::after{
+    content:"";position:absolute;top:0;bottom:0;width:18%;max-width:9rem;z-index:1;pointer-events:none;
+  }
+  .marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--black),rgba(17,17,19,0))}
+  .marquee-wrap::after{right:0;background:linear-gradient(270deg,var(--black),rgba(17,17,19,0))}
+  .marquee{display:flex;align-items:center;white-space:nowrap;width:max-content;animation:scroll 45s linear infinite}
+  .marquee-wrap:hover .marquee{animation-play-state:paused}
+  .marquee span{display:flex;align-items:baseline;gap:.55rem;font-size:1rem;font-weight:700;color:var(--white);letter-spacing:.01em}
+  .marquee span i{font-family:var(--serif);font-style:italic;font-weight:400;font-size:.82rem;color:var(--muted-dark);direction:ltr}
+  .marquee span::after{content:"✦";font-size:.7rem;color:var(--yellow);margin-inline:2rem;align-self:center}
+  .marquee span:nth-child(3n+2)::after{color:var(--pink)}
+  .marquee span:nth-child(3n+3)::after{color:var(--blue)}
   @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* ================= section heads ================= */
@@ -328,6 +339,7 @@
     .js .split > span{transform:none}
     .js .reveal{opacity:1;transform:none}
     .marquee{flex-wrap:wrap;white-space:normal;width:auto;justify-content:center;row-gap:.5rem}
+    .marquee-wrap::before,.marquee-wrap::after{display:none}
   }
 </style>
 </head>
@@ -541,10 +553,11 @@
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canHover = matchMedia('(hover: hover)').matches;
 
-  /* marquee: category names, doubled for a seamless loop */
-  var words = [].slice.call(document.querySelectorAll('.cat-t b')).map(function (b) { return b.textContent; });
+  /* marquee: category names (Arabic + English), doubled for a seamless loop */
   var mq = document.getElementById('marquee');
-  var html = words.map(function (w) { return '<span>' + w + '</span>'; }).join('');
+  var html = [].slice.call(document.querySelectorAll('.cat-t')).map(function (t) {
+    return '<span>' + t.querySelector('b').innerHTML + '<i>' + t.querySelector('i').innerHTML + '</i></span>';
+  }).join('');
   mq.innerHTML = reduced ? html : html + html;
 
   /* scroll: progress bar + background parallax, one rAF per frame */
