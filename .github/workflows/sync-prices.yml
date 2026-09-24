@@ -1,0 +1,54 @@
+# Polls the Google Sheet and, when the menu changed, commits the new menu.csv.
+# That push is what makes Vercel rebuild — the owner only ever edits the sheet.
+#
+# Needs one repository secret: SHEET_CSV_URL (the sheet's published CSV link).
+
+name: Sync prices from Google Sheet
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-prices
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch the sheet
+        env:
+          SHEET_CSV_URL: ${{ secrets.SHEET_CSV_URL }}
+        run: |
+          if [ -z "$SHEET_CSV_URL" ]; then
+            echo "::error::Repository secret SHEET_CSV_URL is not set."
+            exit 1
+          fi
+          curl -fsSL --retry 3 "${SHEET_CSV_URL}&cb=$(date +%s)" -o sheet.csv
+
+      # Same guard the Vercel build uses: a half-empty or broken sheet stops
+      # here, so nothing is committed and the live menu stays as it is.
+      - name: Validate
+        run: python3 build.py sheet.csv
+
+      - name: Commit if prices changed
+        run: |
+          tr -d '\r' < sheet.csv | awk 1 > menu.csv
+          rm sheet.csv
+          if git diff --quiet -- menu.csv; then
+            echo "No changes in the sheet."
+            exit 0
+          fi
+          git config user.name "Adam Yasser Tayel"
+          git config user.email "adamtayel55@gmail.com"
+          git add menu.csv
+          git commit -m "Update prices from Google Sheet"
+          git push

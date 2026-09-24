@@ -1,9 +1,15 @@
 /**
  * Funzo — rebuild the website when the menu sheet changes.
  *
- * Paste this whole file into the sheet: Extensions > Apps Script > Code.gs.
- * Setup steps are in README.md, section 4.
+ * Optional — the GitHub Action in .github/workflows already keeps the site in
+ * sync every ~5 minutes. This makes it ~1–2 minutes. Setup:
+ *   1. Vercel > Project Settings > Git > Deploy Hooks > create one on `main`.
+ *   2. Sheet > Extensions > Apps Script > replace Code.gs with this file,
+ *      paste the hook URL into DEPLOY_HOOK below, Save.
+ *   3. Triggers (clock icon) > Add Trigger > onMenuEdit > From spreadsheet >
+ *      On edit > Save, and approve the permission prompt.
  *
+
  * Why two rebuilds per burst of edits: Google republishes the sheet's CSV a
  * few minutes after an edit, not instantly. The first rebuild (~1 min after
  * the owner stops typing) usually already has the new prices; the second

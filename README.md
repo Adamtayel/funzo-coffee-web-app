@@ -65,25 +65,40 @@ The menu lives at `/menu`. `/` redirects there until a homepage exists.
 
 ## 4. Rebuild on edit
 
-1. Vercel → Project Settings → Git → Deploy Hooks → create a hook named
-   `sheet-edit` on `main` → copy the URL.
-2. In the sheet: Extensions → Apps Script. Replace everything in `Code.gs`
-   with the contents of [`apps-script.js`](apps-script.js), and paste the
-   deploy hook URL into `DEPLOY_HOOK` at the top. Save.
-3. Triggers (clock icon) → Add Trigger → function `onMenuEdit` → event source
-   *From spreadsheet* → event type *On edit* → Save. Approve the permission
-   prompt (it needs to call the deploy hook and schedule timers).
-4. Reload the sheet. A new menu, **الموقع → حدّث الموقع دلوقتي**, appears —
-   that forces a rebuild immediately.
+[`.github/workflows/sync-prices.yml`](.github/workflows/sync-prices.yml)
+checks the sheet every 5 minutes. When anything changed, it validates the
+sheet with `build.py` and commits the new `menu.csv`; that push triggers a
+normal Vercel deploy. Nothing to install in Google, no deploy hook.
 
-Edit a price and the page updates about 1–2 minutes after the owner stops
-typing, with a second rebuild ~6 minutes later as a guarantee. Google
-republishes the CSV with a delay after edits, which is why one rebuild alone
-can occasionally pick up the old price. `build.py` also adds a cache-busting
-parameter to the CSV fetch so Google's 5-minute CDN cache is never the issue.
+One-time setup: GitHub → repo → Settings → Secrets and variables → Actions →
+New repository secret → name `SHEET_CSV_URL`, value = the published CSV link.
+
+Expect a price edit to be live in roughly 5–15 minutes (GitHub runs scheduled
+jobs every 5 minutes at best, sometimes later under load; Google also takes a
+few minutes to republish the CSV). Run it immediately from the repo's Actions
+tab → *Sync prices from Google Sheet* → *Run workflow*.
+
+Things to know:
+- A broken sheet (fewer than `MIN_ITEMS` rows) fails the workflow and commits
+  nothing — the live menu stays. GitHub emails the repo owner on failure.
+- Every price change becomes a commit, so `git log -- menu.csv` is the price
+  history.
+- GitHub pauses scheduled workflows after 60 days with no commits. Price
+  changes count as commits, so this only bites if nothing changes for two
+  months; re-enable it from the Actions tab.
+- Free on a public repo. On a private repo, a 5-minute schedule uses more
+  than the free 2,000 Actions minutes/month — switch the cron to `*/30` or
+  use the Apps Script option below.
+- `build.py` cache-busts the CSV fetch, so Google's 5-minute CDN cache never
+  serves Vercel an old price.
+
+**Optional, faster (~1–2 min):** [`apps-script.js`](apps-script.js) runs
+inside the sheet and fires a Vercel deploy hook when the owner edits. Setup
+steps are in the comment at the top of that file; it needs someone logged
+into the owner's Google account and Vercel. Both mechanisms can run at once.
 
 To check it worked: the menu footer shows "آخر تحديث للأسعار" with the date
-of the last successful build, and Vercel → Deployments lists each rebuild.
+of the last build, and Vercel → Deployments lists each rebuild.
 
 ---
 
