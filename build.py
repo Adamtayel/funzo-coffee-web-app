@@ -29,18 +29,15 @@ CAFE_NAME = "Funzo"
 WIFI = "funzo2026"
 PHONE = "011 5709 7578"
 PHONE_RAW = "+201157097578"
-SITE_URL = "https://funzo.vercel.app"
 TAYEL_URL = "https://tayel.net"
 
-# Where each page lives. Relative paths work on any single domain, which is
-# the setup today. Once the custom domain is connected, switch both to
-# absolute URLs so the menu subdomain can link back to the main site, e.g.
-#   HOME_URL = "https://funzo.cc"
-#   MENU_URL = "https://menu.funzo.cc"
-# (and set SITE_URL to HOME_URL). vercel.json already serves the menu at
-# the root of any "menu." host, whatever the domain ends up being.
-HOME_URL = "/"
-MENU_URL = "/menu"
+# Where each page lives. Absolute, since home.funzo.cc and menu.funzo.cc are
+# different hosts — a relative link from one would point at itself, not the
+# other. vercel.json rewrites "/" to "/menu" specifically for the
+# menu.funzo.cc host, so MENU_URL alone reaches the menu.
+HOME_URL = "https://funzo.cc"
+MENU_URL = "https://menu.funzo.cc"
+SITE_URL = HOME_URL
 CURRENCY = "EGP"
 
 TEMPLATE = "template.html"

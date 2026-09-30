@@ -7,7 +7,7 @@
   "rewrites": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "menu\\..+" }],
+      "has": [{ "type": "host", "value": "menu\\.funzo\\.cc" }],
       "destination": "/menu"
     }
   ],
