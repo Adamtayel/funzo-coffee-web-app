@@ -24,7 +24,12 @@ import qrcode
 from qrcode.constants import ERROR_CORRECT_H
 from PIL import Image, ImageDraw
 
-URL = "https://menu.funzo.cc"
+# Each QR code: (url, output basename). The menu one is the table sticker;
+# the homepage one is for anything that should land on the full site.
+TARGETS = [
+    ("https://menu.funzo.cc", "funzo-menu-qr"),
+    ("https://funzo.cc", "funzo-home-qr"),
+]
 OUT_DIR = "qr"
 
 # Funzo brand colours (see template.html / home.html :root)
@@ -54,13 +59,13 @@ def make_logo(size):
     return img.resize((size, size), Image.LANCZOS)
 
 
-def make_qr(logo=None):
+def make_qr(url, logo=None):
     qr = qrcode.QRCode(
         error_correction=ERROR_CORRECT_H,  # up to ~30% of the code can be
         box_size=20,                       # covered — needed since the logo
         border=4,                          # sits on top of the center
     )
-    qr.add_data(URL)
+    qr.add_data(url)
     qr.make(fit=True)
     img = qr.make_image(fill_color=INK, back_color="white").convert("RGBA")
 
@@ -80,15 +85,16 @@ def main():
     import os
     os.makedirs(OUT_DIR, exist_ok=True)
 
-    plain = make_qr(logo=False)
-    plain.save(f"{OUT_DIR}/funzo-menu-qr.png")
-    print(f"{OUT_DIR}/funzo-menu-qr.png — {plain.size[0]}x{plain.size[1]}px, points to {URL}")
+    for url, name in TARGETS:
+        plain = make_qr(url, logo=False)
+        plain.save(f"{OUT_DIR}/{name}.png")
+        print(f"{OUT_DIR}/{name}.png — {plain.size[0]}x{plain.size[1]}px, points to {url}")
 
-    branded = make_qr(logo=True)
-    branded.save(f"{OUT_DIR}/funzo-menu-qr-logo.png")
-    print(f"{OUT_DIR}/funzo-menu-qr-logo.png — {branded.size[0]}x{branded.size[1]}px, with logo")
+        branded = make_qr(url, logo=True)
+        branded.save(f"{OUT_DIR}/{name}-logo.png")
+        print(f"{OUT_DIR}/{name}-logo.png — {branded.size[0]}x{branded.size[1]}px, with logo")
 
-    print("\nScan funzo-menu-qr-logo.png with an actual phone before printing.")
+    print("\nScan each file with an actual phone before printing.")
 
 
 if __name__ == "__main__":
